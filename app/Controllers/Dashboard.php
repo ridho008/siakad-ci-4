@@ -1,10 +1,13 @@
 <?php namespace App\Controllers;
 
-class Home extends BaseController
+class Dashboard extends BaseController
 {
 	public function index()
 	{
-		return view('welcome_message');
+		$data = [
+			'title' => 'Dashboard'
+		];
+		return view('admin/dashboard', $data);
 	}
 
 	//--------------------------------------------------------------------

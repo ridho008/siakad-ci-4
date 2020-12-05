@@ -10,15 +10,25 @@ class Filters extends BaseConfig
 		'csrf'     => \CodeIgniter\Filters\CSRF::class,
 		'toolbar'  => \CodeIgniter\Filters\DebugToolbar::class,
 		'honeypot' => \CodeIgniter\Filters\Honeypot::class,
+		'authfilter' => \App\Filters\AuthFilter::class
 	];
 
 	// Always applied before every request
 	public $globals = [
+		// sebelum login tidak bisa mengakses controller, wajib login dulu.
 		'before' => [
+			'authfilter' => ['except' => [
+				'auth', 'auth/*',
+				'/'
+			]]
 			//'honeypot'
 			// 'csrf',
 		],
+		// setelah login, kamu tidak bisa mengakses auth/halaman login
 		'after'  => [
+			'authfilter' => ['except' => [
+				'dashboard', 'dashboard/*'
+			]],
 			'toolbar',
 			//'honeypot'
 		],
