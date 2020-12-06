@@ -13,10 +13,23 @@ class Fakultas extends BaseController
 
 	public function index()
 	{
+		// mengambil url pagination
+		$current_page = $this->request->getVar('page_fakultas') ? $this->request->getVar('page_fakultas') : 1;
+
+		$keyword = $this->request->getVar('keyword');
+		if($keyword) {
+			$fakultas = $this->fakultasModel->search($keyword);
+		} else {
+			$fakultas = $this->fakultasModel;
+		}
+
 		$data = [
 			'title' => 'Fakultas',
-			'fakultas' => $this->fakultasModel->findAll(),
-			'validation' => \Config\Services::validation()
+			// 'fakultas' => $this->fakultasModel->findAll(),
+			'fakultas' => $fakultas->paginate(2, 'fakultas'),
+			'pager' => $this->fakultasModel->pager,
+			'validation' => \Config\Services::validation(),
+			'currentPage' => $current_page
 		];
 		return view('admin/fakultas/index', $data);
 	}

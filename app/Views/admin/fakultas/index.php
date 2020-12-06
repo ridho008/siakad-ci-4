@@ -8,6 +8,14 @@
 			<div class="row">
 				<div class="col-md-6 mb-3">
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalFakultas">Tambah Data Fakultas</button>
+					<form action="/fakultas" method="post">
+						<div class="input-group mt-3">
+						  <input type="text" class="form-control" autofocus="on" autocomplete="off" placeholder="cari..." name="keyword">
+						  <div class="input-group-append">
+						    <button class="btn btn-primary" type="submit" id="button-addon2">Cari</button>
+						  </div>
+						</div>
+					</form>
 					<?php if($validation->listErrors()) : ?>
 					<div class="alert alert-danger" role="alert">
 						<?= $validation->listErrors(); ?>
@@ -33,7 +41,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php $no = 1; foreach($fakultas as $f) : ?>
+								<?php $no = 1 + (2 * ($currentPage - 1)); foreach($fakultas as $f) : ?>
                   <tr>
                   	<td><?= $no++; ?></td>
                   	<td><?= $f['fakultas']; ?></td>
@@ -49,6 +57,7 @@
 								<?php endforeach; ?>
 							</tbody>
 						</table>
+						<?= $pager->links('fakultas', 'fakultas_pagination'); ?>
 					</div>
 				</div>
 			</div>
