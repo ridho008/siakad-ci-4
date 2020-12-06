@@ -33,6 +33,8 @@ $routes->setAutoRoute(true);
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'Dashboard::index');
 
+$routes->get('/admin/fakultas', 'Fakultas::index');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

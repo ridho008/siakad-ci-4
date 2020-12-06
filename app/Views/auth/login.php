@@ -48,7 +48,7 @@
                   <form class="user" action="auth/login" method="post">
                     <?= csrf_field(); ?>
                     <div class="form-group">
-                      <input type="text" name="username" class="form-control<?= ($validation->hasError('username')) ? ' is-invalid' : '' ?> form-control-user" id="username" placeholder="Masukan Username">
+                      <input type="text" name="username" autofocus="on" class="form-control<?= ($validation->hasError('username')) ? ' is-invalid' : '' ?> form-control-user" id="username" placeholder="Masukan Username">
                       <div class="invalid-feedback"><?= $validation->getError('username'); ?></div>
                     </div>
                     <div class="form-group">

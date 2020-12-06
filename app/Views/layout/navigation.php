@@ -2,8 +2,8 @@
 
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-    <div class="sidebar-brand-icon rotate-n-15">
-      <i class="fas fa-laugh-wink"></i>
+    <div class="sidebar-brand-icon">
+      <i class="fas fa-graduation-cap"></i>
     </div>
     <div class="sidebar-brand-text mx-3">SIAKAD <sup>CI4</sup></div>
   </a>
@@ -52,7 +52,7 @@
   </div>
   <!-- Nav Item - Charts -->
   <li class="nav-item">
-    <a class="nav-link" href="charts.html">
+    <a class="nav-link" href="/admin/fakultas">
       <i class="fas fa-fw fa-chart-area"></i>
       <span>Fakultas</span></a>
   </li>

@@ -176,7 +176,7 @@
   <script src="/js/sb-admin-2.min.js"></script>
   <script>
     window.setTimeout(function() {
-      $('.alert').fadeTo(500, 0).slideUp(500, function() {
+      $('.alert').fadeTo(6000, 0).slideUp(500, function() {
         $(this).remove();
       });
     });

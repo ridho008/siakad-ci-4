@@ -18,8 +18,7 @@ class Filters extends BaseConfig
 		// sebelum login tidak bisa mengakses controller, wajib login dulu.
 		'before' => [
 			'authfilter' => ['except' => [
-				'auth', 'auth/*',
-				'/'
+				'auth', 'auth/*'
 			]]
 			//'honeypot'
 			// 'csrf',

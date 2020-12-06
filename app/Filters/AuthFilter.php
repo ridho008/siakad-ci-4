@@ -17,8 +17,9 @@ class AuthFilter implements FilterInterface
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        if(session()->get('log') == true) {
-        	return redirect()->to('/dashboard');
-        }
+        // if(session()->get('log') == true) {
+        //     // if(getSegment(1) == '')
+        // 	return redirect()->to('/dashboard');
+        // }
     }
 }
