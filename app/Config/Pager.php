@@ -23,6 +23,7 @@ class Pager extends BaseConfig
 		'default_head'   => 'CodeIgniter\Pager\Views\default_head',
 		'fakultas_pagination'   => 'CodeIgniter\Pager\Views\fakultas_pagination',
 		'gedung_pagination'   => 'CodeIgniter\Pager\Views\gedung_pagination',
+		'tahunaka_pagination'   => 'CodeIgniter\Pager\Views\tahunaka_pagination',
 	];
 
 	/*

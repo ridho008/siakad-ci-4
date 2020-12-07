@@ -38,6 +38,8 @@ $routes->get('/admin/gedung', 'Gedung::index');
 $routes->get('/admin/ruangan', 'Ruangan::index');
 $routes->get('/admin/prodi', 'Prodi::index');
 
+$routes->get('/admin/tahunaka', 'TahunAka::index');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing
