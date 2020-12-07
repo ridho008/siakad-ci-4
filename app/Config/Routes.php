@@ -35,6 +35,7 @@ $routes->get('/', 'Dashboard::index');
 
 $routes->get('/admin/fakultas', 'Fakultas::index');
 $routes->get('/admin/gedung', 'Gedung::index');
+$routes->get('/admin/ruangan', 'Ruangan::index');
 
 /**
  * --------------------------------------------------------------------
