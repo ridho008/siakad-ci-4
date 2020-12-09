@@ -8,7 +8,7 @@ class MatkulModel extends Model
 {
 	protected $table = 'matkul';
 	protected $primaryKey = 'id_matkul';
-	protected $allowedFields = ['tahun_aka', 'semester'];
+	protected $allowedFields = ['kode_matkul', 'matkul', 'sks', 'kategori', 'smt', 'semester', 'id_prodi'];
 
 	public function joinTable()
 	{
