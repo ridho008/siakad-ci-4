@@ -17,6 +17,14 @@ class ProdiModel extends Model
 				->get()->getResultArray();
 	}
 
+	public function joinProdiFakultasWhereId($id)
+	{
+		return $this->db->table('prodi')
+				->join('fakultas', 'fakultas.id_fakultas = prodi.id_fakultas')
+				->where('id_prodi', $id)
+				->get()->getRowArray();
+	}
+
 	public function getTable($table)
 	{
 		return $this->db->table($table);
