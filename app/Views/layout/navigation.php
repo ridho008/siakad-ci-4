@@ -48,7 +48,6 @@
     </div>
   </li>
 
-
   
   <!-- Nav Item - Charts -->
   <!-- <li class="nav-item">
@@ -91,6 +90,19 @@
       <i class="fas fa-fw fa-table"></i>
       <span>Ruangan</span></a>
   </li> -->
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <i class="fas fa-fw fa-wrench"></i>
+      <span>Pengaturan</span>
+    </a>
+    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Pengaturan</h6>
+        <a class="collapse-item" href="/admin/user">User</a>
+      </div>
+    </div>
+  </li>
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
