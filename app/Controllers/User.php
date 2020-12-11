@@ -55,6 +55,7 @@ class User extends BaseController
 		// dd($foto);
 		// generate nama foto
 		$generateFoto = $foto->getRandomName();
+		// pindahkan ke folder
 		$foto->move('img/user', $generateFoto);
 
 		$this->userModel->save([
@@ -72,30 +73,66 @@ class User extends BaseController
 	public function update($id)
 	{
 		if(!$this->validate([
-			'gedung' => [
+			'nama' => [
 				'rules' => 'required',
 				'errors' => [
 					'required' => '{field} wajib di isi.'
 				]
+			],
+			'username' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.',
+					'is_unique' => '{field} sudah terdaftar.'
+				]
+			],
+			'password' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.'
+				]
+			],
+			'foto' => [
+				'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]'
 			]
 		])) {
-			return redirect()->to('/gedung')->withInput();
+			return redirect()->to('/admin/user')->withInput();
 		}
 
-		$this->gedungModel->save([
-			'id_gedung' => $this->request->getVar('id_gedung'),
-			'gedung' => $this->request->getVar('gedung')
+		// upload foto
+		$foto = $this->request->getFile('foto');
+		if($foto->getError() == 4) {
+			$namaFoto = $this->request->getVar('fotoLama');
+		} else {
+			// generate nama foto
+			$namaFoto = $foto->getRandomName();
+			// pindahkan ke folder
+			$foto->move('img/user', $namaFoto);
+			// hapus foto
+			unlink('img/user/' . $this->request->getVar('fotoLama'));
+		}
+
+		$this->userModel->save([
+			'id_user' => $this->request->getVar('id_user'),
+			'nama_user' => $this->request->getVar('nama'),
+			'username' => $this->request->getVar('username'),
+			'password' => sha1($this->request->getVar('password')),
+			'foto_user' => $namaFoto
 		]);
 
-		session()->setFlashdata('success', 'Data Gedung Berhasil Diedit.');
-		return redirect()->to('/gedung');
+		session()->setFlashdata('success', 'Data User Berhasil Diedit.');
+		return redirect()->to('/admin/user');
 	}
 
-	public function delete($id)
+	public function destroy($id)
 	{
-		$this->gedungModel->delete($id);
-		session()->setFlashdata('success', 'Data Gedung Berhasil Dihapus.');
-		return redirect()->to('/gedung');
+		$user = $this->userModel->find($id);
+		if($user['foto_user'] != 'default.jpg') {
+			unlink('img/user/' . $user['foto_user']);
+		}
+		$this->userModel->delete($id);
+		session()->setFlashdata('success', 'Data User Berhasil Dihapus.');
+		return redirect()->to('/admin/user');
 	}
 
 	//--------------------------------------------------------------------

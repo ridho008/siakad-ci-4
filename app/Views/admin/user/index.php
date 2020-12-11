@@ -54,8 +54,8 @@
                         <td><?= $u['username']; ?></td>
                         <td><?= $u['role']; ?></td>
                         <td>
-                           <a href="/user/edit/<?= $u['id_user']; ?>" class="btn btn-info">Edit</a>
-                           <form action="/user/destroy/<?= $u['id_user']; ?>">
+                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalUser<?= $u['id_user']; ?>">Edit</button>
+                           <form action="/user/destroy/<?= $u['id_user']; ?>" method="post">
                               <?= csrf_field(); ?>
                               <input type="hidden" name="_method" value="DELETE">
                               <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus <?= $u['nama_user']; ?>')">Hapus</button>
@@ -72,6 +72,7 @@
    </div>
 </div>
 
+<!-- Modal Tambah -->
 <div class="modal fade" id="formModalUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -121,5 +122,62 @@
     </div>
   </div>
 </div>
+
+<!-- Modal Edit -->
+<?php foreach($user as $u) : ?>
+<div class="modal fade" id="formModalUser<?= $u['id_user']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit User <?= $u['nama_user']; ?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/user/update/<?= $u['id_user']; ?>" method="post" enctype="multipart/form-data">
+         <?= csrf_field(); ?>
+         <input type="text" name="fotoLama" value="<?= $u['foto_user']; ?>">
+         <input type="text" name="id_user" value="<?= $u['id_user']; ?>">
+         <div class="form-group">
+            <label for="nama">Nama User</label>
+            <input type="text" name="nama" id="nama" class="form-control<?= ($validation->hasError('nama')) ? ' is-invalid' : '' ?>" value="<?= (old('nama')) ? old('nama') : $u['nama_user']; ?>">
+            <div class="invalid-feedback">
+               <?= $validation->getError('nama'); ?>
+            </div>
+         </div>
+         <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control<?= ($validation->hasError('username')) ? ' is-invalid' : '' ?>" value="<?= (old('username')) ? old('username') : $u['username']; ?>">
+            <div class="invalid-feedback">
+               <?= $validation->getError('username'); ?>
+            </div>
+         </div>
+         <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control<?= ($validation->hasError('password')) ? ' is-invalid' : '' ?>">
+            <small class="muted text-danger">ganti password, setiap ingin edit user.</small>
+            <div class="invalid-feedback">
+               <?= $validation->getError('password'); ?>
+            </div>
+         </div>
+         <div class="form-group">
+            <label for="foto">Foto</label><br>
+            <img src="/img/user/<?= $u['foto_user']; ?>" width="100">
+            <input type="file" name="foto" id="foto" class="form-control-file<?= ($validation->hasError('foto')) ? ' is-invalid' : '' ?>">
+            <div class="invalid-feedback">
+               <?= $validation->getError('foto'); ?>
+            </div>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+           <button type="submit" class="btn btn-primary">Tambah</button>
+         </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<?php endforeach; ?>
 
 <?= $this->endSection(); ?>
