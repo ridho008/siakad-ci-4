@@ -65,7 +65,7 @@
 
   <!-- Nav Item - Tables -->
   <li class="nav-item">
-    <a class="nav-link" href="tables.html">
+    <a class="nav-link" href="/admin/dosen">
       <i class="fas fa-fw fa-table"></i>
       <span>Dosen</span></a>
   </li>
