@@ -41,6 +41,7 @@ $routes->get('/admin/tahunaka', 'TahunAka::index');
 $routes->get('/admin/matkul', 'Matkul::index');
 $routes->get('/admin/user', 'User::index');
 $routes->get('/admin/dosen', 'Dosen::index');
+$routes->get('/admin/mahasiswa', 'Mahasiswa::index');
 
 /**
  * --------------------------------------------------------------------
