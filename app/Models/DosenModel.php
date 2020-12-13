@@ -12,6 +12,6 @@ class DosenModel extends Model
 
 	public function search($keyword)
 	{
-		return $this->table('fakultas')->like('fakultas', $keyword);
+		return $this->table('dosen')->like('kode_dosen', $keyword)->orLike('nidn', $keyword)->orLike('nama_dosen', $keyword);
 	}
 }

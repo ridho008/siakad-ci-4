@@ -24,6 +24,7 @@ class Pager extends BaseConfig
 		'fakultas_pagination'   => 'CodeIgniter\Pager\Views\fakultas_pagination',
 		'gedung_pagination'   => 'CodeIgniter\Pager\Views\gedung_pagination',
 		'tahunaka_pagination'   => 'CodeIgniter\Pager\Views\tahunaka_pagination',
+		'dosen_pagination'   => 'CodeIgniter\Pager\Views\dosen_pagination',
 	];
 
 	/*

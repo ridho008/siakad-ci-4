@@ -13,9 +13,20 @@ class Dosen extends BaseController
 
 	public function index()
 	{
+		$currentPage = $this->request->getVar('page_dosen') ? $this->request->getVar('page_dosen') : 1;
+
+		$keyword = $this->request->getVar('keyword');
+		if($keyword) {
+			$dosen = $this->dosenModel->search($keyword);
+		} else {
+			$dosen = $this->dosenModel;
+		}
+
 		$data = [
 			'title' => 'Dosen',
-			'dosen' => $this->dosenModel->findAll(),
+			'dosen' => $dosen->paginate(2, 'dosen'),
+			'pager' => $this->dosenModel->pager,
+			'currentPage' => $currentPage,
 			'validation' => \Config\Services::validation()
 		];
 		return view('admin/dosen/index', $data);

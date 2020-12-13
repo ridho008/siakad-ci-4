@@ -8,7 +8,7 @@
          <div class="row">
             <div class="col-md-6 mb-3">
                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalDosen">Tambah Data Dosen</button>
-               <form action="/user" method="post">
+               <form action="/dosen" method="post">
                   <div class="input-group mt-3">
                     <input type="text" class="form-control" autofocus="on" autocomplete="off" placeholder="cari..." name="keyword">
                     <div class="input-group-append">
@@ -44,7 +44,7 @@
                         </tr>
                      </thead>
                      <tbody>
-                     <?php $no = 1; foreach($dosen as $d) : ?>
+                     <?php $no = 1 + (2 * ($currentPage - 1)); foreach($dosen as $d) : ?>
                      <tr>
                         <td><?= $no++; ?></td>
                         <td>
@@ -65,6 +65,7 @@
                         <?php endforeach; ?>
                      </tbody>
                   </table>
+                  <?= $pager->links('dosen', 'dosen_pagination'); ?>
                </div>
             </div>
          </div>
