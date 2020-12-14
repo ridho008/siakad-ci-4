@@ -44,6 +44,7 @@
         <a class="collapse-item" href="/admin/ruangan">Ruangan</a>
         <a class="collapse-item" href="/admin/tahunaka">Tahun Akademik</a>
         <a class="collapse-item" href="/admin/matkul">Mata Kuliah</a>
+        <a class="collapse-item" href="/admin/kelas">Kelas</a>
       </div>
     </div>
   </li>

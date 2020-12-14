@@ -87,14 +87,14 @@
          <?= csrf_field(); ?>
          <div class="form-group">
             <label for="nim">NIM</label>
-            <input type="text" name="nim" id="nim" class="form-control<?= ($validation->hasError('nim')) ? ' is-invalid' : '' ?>">
+            <input type="text" name="nim" id="nim" class="form-control<?= ($validation->hasError('nim')) ? ' is-invalid' : '' ?>" value="<?= old('nim'); ?>">
             <div class="invalid-feedback">
                <?= $validation->getError('nim'); ?>
             </div>
          </div>
          <div class="form-group">
             <label for="nama">Nama Mahasiswa</label>
-            <input type="text" name="nama" id="nama" class="form-control<?= ($validation->hasError('nama')) ? ' is-invalid' : '' ?>">
+            <input type="text" name="nama" id="nama" class="form-control<?= ($validation->hasError('nama')) ? ' is-invalid' : '' ?>" value="<?= old('nama'); ?>">
             <div class="invalid-feedback">
                <?= $validation->getError('nama'); ?>
             </div>

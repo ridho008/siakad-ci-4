@@ -48,7 +48,7 @@ class Mahasiswa extends BaseController
 				]
 			],
 			'foto' => [
-				'rules' => 'uploaded[foto]|max_size[foto,1024]|mime_in[foto,image/png,image/jpg]|is_image[foto]|ext_in[foto,png,jpg,gif]'
+				'rules' => 'uploaded[foto]|max_size[foto,1024]|mime_in[foto,image/png,image/jpg,image/jpeg]|is_image[foto]|ext_in[foto,png,jpg,gif]'
 			]
 		])) {
 			return redirect()->to('/admin/mahasiswa')->withInput();

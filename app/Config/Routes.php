@@ -42,6 +42,7 @@ $routes->get('/admin/matkul', 'Matkul::index');
 $routes->get('/admin/user', 'User::index');
 $routes->get('/admin/dosen', 'Dosen::index');
 $routes->get('/admin/mahasiswa', 'Mahasiswa::index');
+$routes->get('/admin/kelas', 'Kelas::index');
 
 /**
  * --------------------------------------------------------------------
