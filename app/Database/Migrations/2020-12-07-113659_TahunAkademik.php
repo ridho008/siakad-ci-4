@@ -20,6 +20,11 @@ class TahunAkademik extends Migration
             'semester'       => [
                     'type'           => 'VARCHAR',
                     'constraint'     => 20,
+            ],
+            'status'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 11,
+                    'null' => true
             ]
         ]);
         $this->forge->addKey('id_ta', true);

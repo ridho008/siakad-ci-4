@@ -98,6 +98,28 @@ class TahunAka extends BaseController
 		return redirect()->to('/admin/tahunaka');
 	}
 
+	// Pengaturan
+	public function settings()
+	{
+		$data = [
+			'title' => 'Pengaturan Tahun Akademik',
+			'tahun' => $this->tahunAkaModel->findAll()
+		];
+		return view('admin/tahun_akademik/pengaturan', $data);
+	}
+
+	public function active($id_ta)
+	{
+		$this->tahunAkaModel->resetStatus();
+		$data = [
+			'status' => 1
+		];
+
+		$this->tahunAkaModel->activeStatus($data, $id_ta);
+		session()->setFlashdata('success', 'Tahun Akademik Berhasil Diaktifkan.');
+		return redirect()->to('/setting/tahunaka');
+	}
+
 	//--------------------------------------------------------------------
 
 }

@@ -101,6 +101,7 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Pengaturan</h6>
         <a class="collapse-item" href="/admin/user">User</a>
+        <a class="collapse-item" href="/setting/tahunaka">Tahun Akademik</a>
       </div>
     </div>
   </li>
