@@ -26,6 +26,8 @@
 									<th>Fakultas</th>
 									<th>Kode</th>
 									<th>Prodi</th>
+                           <th>Jenjang</th>
+                           <th>Ketua Prodi</th>
 									<th><i class="fas fa-cogs"></i></th>
 								</tr>
 							</thead>
@@ -36,6 +38,8 @@
                   	<td><?= $p['fakultas']; ?></td>
                   	<td><?= $p['kode_prodi']; ?></td>
                   	<td><?= $p['prodi']; ?></td>
+                     <td><?= $p['jenjang']; ?></td>
+                     <td><?= $p['ketua_prodi']; ?></td>
                   	<td>
                   		<a href="/prodi/edit/<?= $p['id_prodi']; ?>" class="btn btn-info">Edit</a>
                   		<form action="/prodi/destroy/<?= $p['id_prodi']; ?>">

@@ -33,6 +33,31 @@
             <?= $validation->getError('prodi'); ?>
           </div>
         </div>
+        <div class="form-group">
+          <label for="jenjang">Jenjang</label>
+          <select name="jenjang" id="jenjang" class="form-control<?= ($validation->hasError('jenjang')) ? ' is-invalid' : '' ?>">
+            <option value="">-- Pilih Jenjang --</option>
+            <option value="D3">D3</option>
+            <option value="S1">S1</option>
+            <option value="S2">S2</option>
+            <option value="S3">S3</option>
+          </select>
+          <div class="invalid-feedback">
+            <?= $validation->getError('prodi'); ?>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ka_prodi">Ketua Prodi</label>
+          <select name="ka_prodi" id="ka_prodi" class="form-control<?= ($validation->hasError('ka_prodi')) ? ' is-invalid' : '' ?>">
+            <option value="">-- Pilih Ketua Prodi --</option>
+            <?php foreach($dosen as $d) : ?>
+              <option value="<?= $d['nama_dosen']; ?>"><?= $d['nama_dosen']; ?></option>
+            <?php endforeach; ?>
+          </select>
+          <div class="invalid-feedback">
+            <?= $validation->getError('prodi'); ?>
+          </div>
+        </div>
       	<div class="form-group">
       		<a href="/prodi" class="btn btn-secondary">Kembali</a>
       		<button type="submit" class="btn btn-primary">Tambah</button>

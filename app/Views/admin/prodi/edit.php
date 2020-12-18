@@ -38,6 +38,35 @@
             <?= $validation->getError('prodi'); ?>
           </div>
         </div>
+        <div class="form-group">
+          <label for="jenjang">Jenjang</label>
+          <select name="jenjang" id="jenjang" class="form-control<?= ($validation->hasError('jenjang')) ? ' is-invalid' : '' ?>">
+            <option value="">-- Pilih Jenjang --</option>
+            <option value="D3" <?php if($prodi['jenjang'] == 'D3'){echo "selected";} ?>>D3</option>
+            <option value="S1" <?php if($prodi['jenjang'] == 'S1'){echo "selected";} ?>>S1</option>
+            <option value="S2" <?php if($prodi['jenjang'] == 'S2'){echo "selected";} ?>>S2</option>
+            <option value="S3" <?php if($prodi['jenjang'] == 'S3'){echo "selected";} ?>>S3</option>
+          </select>
+          <div class="invalid-feedback">
+            <?= $validation->getError('prodi'); ?>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ka_prodi">Ketua Prodi</label>
+          <select name="ka_prodi" id="ka_prodi" class="form-control<?= ($validation->hasError('ka_prodi')) ? ' is-invalid' : '' ?>">
+            <option value="">-- Pilih Ketua Prodi --</option>
+            <?php foreach($dosen as $d) : ?>
+              <?php if($prodi['ketua_prodi'] == $d['nama_dosen']) : ?>
+              <option value="<?= $d['nama_dosen']; ?>" selected><?= $d['nama_dosen']; ?></option>
+              <?php else: ?>
+                <option value="<?= $d['nama_dosen']; ?>"><?= $d['nama_dosen']; ?></option>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </select>
+          <div class="invalid-feedback">
+            <?= $validation->getError('prodi'); ?>
+          </div>
+        </div>
       	<div class="form-group">
       		<a href="/prodi" class="btn btn-secondary">Kembali</a>
       		<button type="submit" class="btn btn-primary">Edit</button>

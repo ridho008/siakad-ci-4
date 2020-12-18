@@ -8,7 +8,7 @@ class ProdiModel extends Model
 {
 	protected $table = 'prodi';
 	protected $primaryKey = 'id_prodi';
-	protected $allowedFields = ['id_fakultas', 'kode_prodi', 'prodi'];
+	protected $allowedFields = ['id_fakultas', 'kode_prodi', 'prodi', 'jenjang', 'ketua_prodi'];
 
 	public function joinProdiFakultas()
 	{

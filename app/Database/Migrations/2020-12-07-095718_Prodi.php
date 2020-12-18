@@ -24,6 +24,14 @@ class Prodi extends Migration
             'prodi'       => [
                     'type'           => 'VARCHAR',
                     'constraint'     => 50,
+            ],
+            'jenjang'       => [
+                    'type'           => 'VARCHAR',
+                    'constraint'     => 50,
+            ],
+            'ketua_prodi'       => [
+                    'type'           => 'VARCHAR',
+                    'constraint'     => 50,
             ]
         ]);
         $this->forge->addKey('id_prodi', true);
