@@ -22,4 +22,10 @@ class RuanganModel extends Model
 	{
 		return $this->db->table($table);
 	}
+
+	public function countRuangan()
+   {
+      return $this->db->table('ruangan')
+               ->countAllResults();
+   }
 }

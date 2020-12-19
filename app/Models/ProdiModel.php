@@ -29,4 +29,10 @@ class ProdiModel extends Model
 	{
 		return $this->db->table($table);
 	}
+
+	public function countProdi()
+   {
+      return $this->db->table('prodi')
+               ->countAllResults();
+   }
 }

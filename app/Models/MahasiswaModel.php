@@ -22,4 +22,10 @@ class MahasiswaModel extends Model
 	{
 		return $this->table('fakultas')->like('fakultas', $keyword);
 	}
+
+   public function countMhs()
+   {
+      return $this->db->table('mahasiswa')
+               ->countAllResults();
+   }
 }
