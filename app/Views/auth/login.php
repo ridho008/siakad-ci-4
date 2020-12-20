@@ -52,6 +52,15 @@
                       <div class="invalid-feedback"><?= $validation->getError('username'); ?></div>
                     </div>
                     <div class="form-group">
+                      <select name="role" id="role" class="form-control<?= ($validation->hasError('role')) ? ' is-invalid' : '' ?>">
+                        <option value="">-- Pilih Role --</option>
+                        <option value="1">Admin</option>
+                        <option value="2">Dosen</option>
+                        <option value="3">Mahasiswa</option>
+                      </select>
+                      <div class="invalid-feedback"><?= $validation->getError('role'); ?></div>
+                    </div>
+                    <div class="form-group">
                       <input type="password" name="password" class="form-control<?= ($validation->hasError('password')) ? ' is-invalid' : '' ?> form-control-user" id="password" placeholder="Masukan Password">
                       <div class="invalid-feedback"><?= $validation->getError('password'); ?></div>
                     </div>

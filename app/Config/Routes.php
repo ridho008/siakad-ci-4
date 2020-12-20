@@ -31,8 +31,11 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
-$routes->get('/', 'Dashboard::index');
+$routes->get('/', function() {
+   echo "<h1>Selamat Datang Di Aplikasi SIAKAD CI4</h1>";
+});
 
+$routes->get('/admin/dashboard', 'Dashboard::index');
 $routes->get('/admin/fakultas', 'Fakultas::index');
 $routes->get('/admin/gedung', 'Gedung::index');
 $routes->get('/admin/ruangan', 'Ruangan::index');
@@ -46,6 +49,11 @@ $routes->get('/admin/kelas', 'Kelas::index');
 $routes->get('/admin/jadwal', 'JadwalKuliah::index');
 $routes->get('/setting/tahunaka', 'TahunAka::settings');
 
+// Dashboard Dosen
+$routes->get('/dosen', 'Dosen/Dosen::index');
+
+// Dashboard Mahasiswa
+$routes->get('/mahasiswa', 'Mahasiswa/Mahasiswa::index');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

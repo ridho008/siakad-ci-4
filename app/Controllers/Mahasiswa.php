@@ -34,6 +34,12 @@ class Mahasiswa extends BaseController
 					'required' => '{field} wajib di isi.'
 				]
 			],
+			'password' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.'
+				]
+			],
 			'nama' => [
 				'rules' => 'required',
 				'errors' => [
@@ -64,6 +70,7 @@ class Mahasiswa extends BaseController
 
 		$this->mahasiswaModel->save([
 			'nim' => $this->request->getVar('nim'),
+			'password' => sha1($this->request->getVar('password')),
 			'nama_mhs' => $this->request->getVar('nama'),
 			'id_prodi' => $this->request->getVar('prodi'),
 			'foto_mhs' => $generateFoto,
@@ -77,6 +84,12 @@ class Mahasiswa extends BaseController
 	{
 		if(!$this->validate([
 			'nim' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => '{field} wajib di isi.'
+				]
+			],
+			'password' => [
 				'rules' => 'required',
 				'errors' => [
 					'required' => '{field} wajib di isi.'
@@ -118,6 +131,7 @@ class Mahasiswa extends BaseController
 		$this->mahasiswaModel->save([
 			'id_mhs' => $this->request->getVar('id_mhs'),
 			'nim' => $this->request->getVar('nim'),
+			'password' => sha1($this->request->getVar('password')),
 			'nama_mhs' => $this->request->getVar('nama'),
 			'id_prodi' => $this->request->getVar('prodi'),
 			'foto_mhs' => $namaFoto,

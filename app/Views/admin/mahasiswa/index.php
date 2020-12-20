@@ -93,6 +93,13 @@
             </div>
          </div>
          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control<?= ($validation->hasError('password')) ? ' is-invalid' : '' ?>" value="<?= old('password'); ?>">
+            <div class="invalid-feedback">
+               <?= $validation->getError('password'); ?>
+            </div>
+         </div>
+         <div class="form-group">
             <label for="nama">Nama Mahasiswa</label>
             <input type="text" name="nama" id="nama" class="form-control<?= ($validation->hasError('nama')) ? ' is-invalid' : '' ?>" value="<?= old('nama'); ?>">
             <div class="invalid-feedback">
@@ -149,6 +156,13 @@
             <input type="text" name="nim" id="nim" class="form-control<?= ($validation->hasError('nim')) ? ' is-invalid' : '' ?>" value="<?= (old('nim')) ? old('nim') : $m['nim']; ?>">
             <div class="invalid-feedback">
                <?= $validation->getError('nim'); ?>
+            </div>
+         </div>
+         <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text" name="password" id="password" class="form-control<?= ($validation->hasError('password')) ? ' is-invalid' : '' ?>" value="<?= old('password'); ?>">
+            <div class="invalid-feedback">
+               <?= $validation->getError('password'); ?>
             </div>
          </div>
          <div class="form-group">

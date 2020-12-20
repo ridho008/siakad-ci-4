@@ -8,7 +8,7 @@ class MahasiswaModel extends Model
 {
 	protected $table = 'mahasiswa';
 	protected $primaryKey = 'id_mhs';
-	protected $allowedFields = ['nim', 'nama_mhs', 'id_prodi', 'foto_mhs'];
+	protected $allowedFields = ['nim', 'password', 'nama_mhs', 'id_prodi', 'foto_mhs'];
 
    public function joinMhsProdi()
    {

@@ -4,11 +4,11 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
 
-class AuthFilter implements FilterInterface
+class MahasiswaFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if(session()->get('log') != true) {
+        if(!session()->get('role')) {
         	return redirect()->to('/auth');
         }
     }
@@ -17,9 +17,8 @@ class AuthFilter implements FilterInterface
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        // if(session()->get('log') == true) {
-        //     // if(getSegment(1) == '')
-        // 	return redirect()->to('/dashboard');
-        // }
+        if(session()->get('role') == 3) {
+        	return redirect()->to('/mahasiswa');
+        }
     }
 }

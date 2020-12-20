@@ -17,6 +17,10 @@ class Mahasiswa extends Migration
                     'type'           => 'INT',
                     'constraint'     => 20,
             ],
+            'password'       => [
+                    'type'           => 'VARCHAR',
+                    'constraint'     => 255,
+            ],
             'nama_mhs'       => [
                     'type'           => 'VARCHAR',
                     'constraint'     => 50,

@@ -10,14 +10,25 @@ class Filters extends BaseConfig
 		'csrf'     => \CodeIgniter\Filters\CSRF::class,
 		'toolbar'  => \CodeIgniter\Filters\DebugToolbar::class,
 		'honeypot' => \CodeIgniter\Filters\Honeypot::class,
-		'authfilter' => \App\Filters\AuthFilter::class
+		'adminfilter' => \App\Filters\AdminFilter::class,
+		'dosenfilter' => \App\Filters\DosenFilter::class,
+		'mahasiswafilter' => \App\Filters\MahasiswaFilter::class
 	];
 
 	// Always applied before every request
 	public $globals = [
 		// sebelum login tidak bisa mengakses controller, wajib login dulu.
 		'before' => [
-			'authfilter' => ['except' => [
+			'adminfilter' => ['except' => [
+				'/',
+				'auth', 'auth/*'
+			]],
+			'dosenfilter' => ['except' => [
+				'/',
+				'auth', 'auth/*'
+			]],
+			'mahasiswafilter' => ['except' => [
+				'/',
 				'auth', 'auth/*'
 			]]
 			//'honeypot'
@@ -25,8 +36,26 @@ class Filters extends BaseConfig
 		],
 		// setelah login, kamu tidak bisa mengakses auth/halaman login
 		'after'  => [
-			'authfilter' => ['except' => [
-				'dashboard', 'dashboard/*'
+			'adminfilter' => ['except' => [
+				'admin/dashboard', 'dashboard/*',
+				'admin/dosen', 'dosen/*',
+				'admin/fakultas', 'fakultas/*',
+				'admin/prodi', 'prodi/*',
+				'admin/gedung', 'gedung/*',
+				'admin/ruangan', 'ruangan/*',
+				'admin/tahunaka', 'tahunAka/*',
+				'admin/matkul', 'matkul/*',
+				'admin/kelas', 'kelas/*',
+				'admin/jadwal', 'jadwal/*',
+				'admin/mahasiswa', 'mahasiswa/*',
+				'admin/user', 'user/*',
+				'setting/tahunaka', 'tahunAka/*',
+			]],
+			'dosenfilter' => ['except' => [
+				'dosen', 'dosen/dosen/*'
+			]],
+			'mahasiswafilter' => ['except' => [
+				'mahasiswa', 'mahasiswa/mahasiswa/*'
 			]],
 			'toolbar',
 			//'honeypot'

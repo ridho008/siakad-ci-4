@@ -11,9 +11,10 @@
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
 
+  <?php if(session()->get('role') == 1) : ?>
   <!-- Nav Item - Dashboard -->
   <li class="nav-item">
-    <a class="nav-link" href="/">
+    <a class="nav-link" href="/admin/dashboard">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li>
@@ -106,6 +107,50 @@
       </div>
     </div>
   </li>
+
+  <!-- Navbar Dosen -->
+  <?php elseif(session()->get('role') == 2) : ?>
+    <li class="nav-item">
+      <a class="nav-link" href="/dosen">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+    </li>
+
+    <li class="nav-item active">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+      <i class="fas fa-fw fa-folder"></i>
+      <span>Kelola Data Dosen</span>
+    </a>
+    <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item" href="#">Menu 1</a>
+      </div>
+    </div>
+  </li>
+
+  <!-- Navbar Mahasiswa -->
+    <?php elseif(session()->get('role') == 3) : ?>
+      <li class="nav-item">
+        <a class="nav-link" href="/mahasiswa">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <li class="nav-item active">
+      <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Kelola Data Mahasiswa</span>
+      </a>
+      <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" href="#">Menu 1</a>
+        </div>
+      </div>
+    </li>
+
+<?php endif; ?>
+
+
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
