@@ -50,12 +50,14 @@ class Filters extends BaseConfig
 				'admin/mahasiswa', 'mahasiswa/*',
 				'admin/user', 'user/*',
 				'setting/tahunaka', 'tahunAka/*',
+				'jadwalKuliah/detail/1', 'jadwal/*',
 			]],
 			'dosenfilter' => ['except' => [
 				'dosen', 'dosen/dosen/*'
 			]],
 			'mahasiswafilter' => ['except' => [
-				'mahasiswa', 'mahasiswa/mahasiswa/*'
+				'mahasiswa', 'mahasiswa/mahasiswa/*',
+				'mahasiswa/krs', 'mahasiswa/krs/*',
 			]],
 			'toolbar',
 			//'honeypot'

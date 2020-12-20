@@ -38,7 +38,7 @@ class KelasModel extends Model
    {
       return $this->db->table('mahasiswa')
                ->join('prodi', 'prodi.id_prodi = mahasiswa.id_prodi')
-               ->where('mahasiswa.id_kelas', 0)
+               ->where('mahasiswa.id_kelas', null)
                ->orderBy('id_mhs', 'desc')
                ->get()->getResultArray();
    }
@@ -47,7 +47,7 @@ class KelasModel extends Model
    {
       $db      = \Config\Database::connect();
       $builder = $db->table('mahasiswa');
-      $builder->set('id_kelas', 0);
+      $builder->set('id_kelas', null);
       $builder->where('id_mhs', $id_mhs);
       $builder->update();
    }

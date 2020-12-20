@@ -112,6 +112,7 @@ class Auth extends BaseController
 		session()->remove('role');
 		session()->remove('foto');
 
+		session()->remove('nim');
 		session()->remove('nidn');
 		session()->remove('kode');
 		session()->setFlashdata('berhasil', 'Berhasil Logout.');

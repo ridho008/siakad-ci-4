@@ -67,6 +67,8 @@
                       <td>
                         <form action="/kelas/deletemhs/<?= $m['id_mhs']; ?>" method="post">
                           <?= csrf_field(); ?>
+                          <input type="hidden" name="_method" value="DELETE">
+                          <input type="hidden" name="id_kelas" value="<?= $m['id_kelas']; ?>">
                           <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                         </form>
                       </td>
@@ -108,7 +110,9 @@
               <td><?= $mz['prodi']; ?></td>
               <td>
                 <form action="/kelas/savemhs/<?= $mz['id_mhs']; ?>" method="post">
-                  <input type="text" name="id_kelas" value="<?= $kelas['id_kelas']; ?>">
+                  <?= csrf_field(); ?>
+                  <input type="hidden" name="id_kelas" value="<?= $kelas['id_kelas']; ?>">
+                  <input type="hidden" name="id_mhs" value="<?= $mz['id_mhs']; ?>">
                   <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i></button>
                 </form>
               </td>

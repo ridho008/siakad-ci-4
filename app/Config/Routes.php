@@ -54,6 +54,7 @@ $routes->get('/dosen', 'Dosen/Dosen::index');
 
 // Dashboard Mahasiswa
 $routes->get('/mahasiswa', 'Mahasiswa/Mahasiswa::index');
+$routes->get('/mahasiswa/krs', 'Mahasiswa/Krs::index');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

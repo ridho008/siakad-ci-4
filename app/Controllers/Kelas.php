@@ -157,7 +157,7 @@ class Kelas extends BaseController
 	{
 		$this->kelasModel->deleteMhsById($id_mhs);
 		session()->setFlashdata('success', 'Data Mahasiswa Berhasil Dihapus.');
-		return redirect()->to('/kelas/mahasiswa/' . $id_mhs);
+		return redirect()->to('/kelas/mahasiswa/' . $this->request->getVar('id_kelas'));
 	}
 
 	public function savemhs($id_mhs)
@@ -168,7 +168,7 @@ class Kelas extends BaseController
 		];
 		$this->kelasModel->upByIdKelas($data);
 		session()->setFlashdata('success', 'Data Mahasiswa Berhasil Dihapus.');
-		return redirect()->to('/kelas/mahasiswa/' . $id_mhs);
+		return redirect()->to('/kelas/mahasiswa/' . $this->request->getVar('id_kelas'));
 	}
 
 	//--------------------------------------------------------------------
