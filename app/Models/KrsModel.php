@@ -56,6 +56,8 @@ class KrsModel extends Model
             ->join('dosen', 'dosen.id_dosen = jadwal.id_dosen', 'left')
             ->join('ruangan', 'ruangan.id_ruangan = jadwal.id_ruangan', 'left')
             ->join('tahun_akademik', 'tahun_akademik.id_ta = jadwal.id_ta', 'left')
+            ->join('mahasiswa', 'mahasiswa.id_prodi = jadwal.id_prodi', 'left')
+            ->where('mahasiswa.nim', session()->get('nim'))
             ->get()->getResultArray();
    }
 }
