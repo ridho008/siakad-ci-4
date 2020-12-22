@@ -55,7 +55,7 @@ class Ruangan extends BaseController
 		]);
 
 		session()->setFlashdata('success', 'Data Ruangan Berhasil Ditambahkan.');
-		return redirect()->to('/ruangan');
+		return redirect()->to('/admin/ruangan');
 	}
 
 	public function edit($id)
@@ -95,7 +95,7 @@ class Ruangan extends BaseController
 		]);
 
 		session()->setFlashdata('success', 'Data Ruangan Berhasil Diedit.');
-		return redirect()->to('/ruangan');
+		return redirect()->to('/admin/ruangan');
 	}
 
 	public function destroy($id)

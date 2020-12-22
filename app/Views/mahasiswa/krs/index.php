@@ -37,12 +37,24 @@
          <tr>
             <th>Dosen PA</th>
             <th>:</th>
-            <th><?= $mhs['nama_dosen']; ?></th>
+            <th>
+               <?php if(empty($mhs['nama_dosen'])) : ?>
+                  <span class="badge badge-info">Dosen Belum Dipilih.</span>
+                  <?php else: ?>
+                     <?= $mhs['nama_dosen']; ?>
+               <?php endif; ?>
+            </th>
          </tr>
          <tr>
             <th>Kelas</th>
             <th>:</th>
-            <th><?= $mhs['nama_kelas']; ?></th>
+            <th>
+               <?php if(empty($mhs['nama_kelas'])) : ?>
+                  <span class="badge badge-info">Anda Belum Mendaftar Kelas.</span>
+                  <?php else: ?>
+                     <?= $mhs['nama_kelas']. '-' . $mhs['tahun_angkatan']; ?>
+               <?php endif; ?>
+            </th>
          </tr>
       </table>
    </div>
@@ -50,8 +62,16 @@
 
 <div class="row">
    <div class="col-md-6">
-      <a href="" class="btn btn-primary mb-1">Tambah Mata Kuliah</a>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalMatkulKrs">Tambah Mata Kuliah</button>
       <a href="" class="btn btn-secondary mb-1">Cetak KRS</a>
+      <?php if($validation->listErrors()) : ?>
+      <div class="alert alert-danger" role="alert">
+         <?= $validation->listErrors(); ?>
+      </div>
+      <?php endif; ?>
+      <?php if(session()->getFlashdata('success')) : ?>
+      <div class="alert alert-success" role="alert"><?= session()->getFlashdata('success'); ?></div>
+      <?php endif; ?>
    </div>
       <div class="col-md-12">
          <div class="table-responsive">
@@ -65,12 +85,86 @@
                   <th>Kelas</th>
                   <th>Ruang</th>
                   <th>Dosen</th>
+                  <th>Waktu</th>
+                  <th><i class="fas fa-cogs"></i></th>
                </tr>
+               <?php $no = 1; foreach($matkulMhs as $mm) : ?>
+                  <tr>
+                     <td><?= $no++; ?></td>
+                     <td><?= $mm['kode_matkul']; ?></td>
+                     <td><?= $mm['matkul']; ?></td>
+                     <td><?= $mm['sks']; ?></td>
+                     <td><?= $mm['smt']; ?></td>
+                     <td><?= $mm['nama_kelas']. '-' .$mm['tahun_aka']; ?></td>
+                     <td><?= $mm['ruangan']; ?></td>
+                     <td><?= $mm['nama_dosen']; ?></td>
+                     <td><?= $mm['hari']. '-' .$mm['waktu']; ?></td>
+                     <td>
+                        <a href="/krs/delete/<?= $mm['id_krs']; ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                     </td>
+                  </tr>
+               <?php endforeach; ?>
             </table>
          </div>
       </div>
    </div>
 
+<div class="modal fade" id="formModalMatkulKrs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Daftar Kuliah</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+               <thead>
+                  <tr>
+                     <th>#</th>
+                     <th>Kode</th>
+                     <th>Matkul</th>
+                     <th>SKS</th>
+                     <th>SMT</th>
+                     <th>Kelas</th>
+                     <th>Ruang</th>
+                     <th>Dosen</th>
+                     <th>Quota</th>
+                     <th>Waktu</th>
+                     <th><i class="fas fa-cogs"></i></th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <?php $no = 1; foreach($jadwalMatkul as $jm) : ?>
+                  <tr>
+                     <td><?= $no++; ?></td>
+                     <td><?= $jm['kode_matkul']; ?></td>
+                     <td><?= $jm['matkul']; ?></td>
+                     <td><?= $jm['sks']; ?></td>
+                     <td><?= $jm['smt']; ?></td>
+                     <td><?= $jm['nama_kelas']; ?></td>
+                     <td><?= $jm['ruangan']; ?></td>
+                     <td><?= $jm['nama_dosen']; ?></td>
+                     <td>0/<?= $jm['quota']; ?></td>
+                     <td><?= $jm['hari']. '-' .$jm['waktu']; ?></td>
+                     <td>
+                        <form action="/krs/create" method="post">
+                           <input type="hidden" name="id_jadwal" value="<?= $jm['id_jadwal']; ?>">
+                           <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i></button>
+                        </form>
+                        <!-- <a href="<?= base_url('/mahasiswa/krs/create/' . $jm['id_jadwal']); ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i></a> -->
+                     </td>
+                  </tr>
+                  <?php endforeach; ?>
+               </tbody>
+            </table>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Content Row -->
 <?= $this->endSection(); ?>

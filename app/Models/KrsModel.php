@@ -6,6 +6,10 @@ use CodeIgniter\Model;
 
 class KrsModel extends Model
 {
+   protected $table = 'krs';
+   protected $primaryKey = 'id_krs';
+   protected $allowedFields = ['id_mhs', 'id_jadwal', 'id_ta'];
+
    public function dataMhs()
    {
       return $this->db->table('mahasiswa')
@@ -16,5 +20,42 @@ class KrsModel extends Model
                ->where('nim', session()->get('nim'))
                ->orderBy('id_mhs', 'desc')
                ->get()->getRowArray();
+   }
+
+   public function daftarMatkul()
+   {
+      return $this->db->table('jadwal')
+               ->join('prodi', 'prodi.id_prodi = jadwal.id_prodi', 'left')
+               ->join('kelas', 'kelas.id_kelas = jadwal.id_kelas', 'left')
+               ->join('dosen', 'dosen.id_dosen = jadwal.id_dosen', 'left')
+               ->join('matkul', 'matkul.id_matkul = jadwal.id_matkul', 'left')
+               ->join('ruangan', 'ruangan.id_ruangan = jadwal.id_ruangan', 'left')
+               ->get()->getResultArray();
+   }
+
+   public function insertKrs($data)
+   {
+      $db      = \Config\Database::connect();
+      $builder = $db->table('krs')->insert($data);
+      // $this->db->table('krs')->insert($data);
+   }
+
+   public function getMhsById()
+   {
+      return $this->db->table('mahasiswa')
+            ->where('nim', session()->get('nim'))
+            ->get()->getRowArray();
+   }
+
+   public function dataKrs()
+   {
+      return $this->db->table('krs')
+            ->join('jadwal', 'jadwal.id_jadwal = krs.id_jadwal', 'left')
+            ->join('matkul', 'matkul.id_matkul = jadwal.id_matkul', 'left')
+            ->join('kelas', 'kelas.id_kelas = jadwal.id_kelas', 'left')
+            ->join('dosen', 'dosen.id_dosen = jadwal.id_dosen', 'left')
+            ->join('ruangan', 'ruangan.id_ruangan = jadwal.id_ruangan', 'left')
+            ->join('tahun_akademik', 'tahun_akademik.id_ta = jadwal.id_ta', 'left')
+            ->get()->getResultArray();
    }
 }

@@ -46,11 +46,10 @@ class Filters extends BaseConfig
 				'admin/tahunaka', 'tahunAka/*',
 				'admin/matkul', 'matkul/*',
 				'admin/kelas', 'kelas/*',
-				'admin/jadwal', 'jadwal/*',
+				'admin/jadwal', 'jadwalKuliah/*',
 				'admin/mahasiswa', 'mahasiswa/*',
 				'admin/user', 'user/*',
-				'setting/tahunaka', 'tahunAka/*',
-				'jadwalKuliah/detail/1', 'jadwal/*',
+				'setting/tahunaka', 'tahunAka/*'
 			]],
 			'dosenfilter' => ['except' => [
 				'dosen', 'dosen/dosen/*'
@@ -58,6 +57,7 @@ class Filters extends BaseConfig
 			'mahasiswafilter' => ['except' => [
 				'mahasiswa', 'mahasiswa/mahasiswa/*',
 				'mahasiswa/krs', 'mahasiswa/krs/*',
+				'krs/create', 'mahasiswa/krs/tambahmatkul*',
 			]],
 			'toolbar',
 			//'honeypot'

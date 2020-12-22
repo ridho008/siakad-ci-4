@@ -52,7 +52,7 @@ class Gedung extends BaseController
 		]);
 
 		session()->setFlashdata('success', 'Data Gedung Berhasil Ditambahkan.');
-		return redirect()->to('/gedung');
+		return redirect()->to('/admin/gedung');
 	}
 
 	public function update($id)
@@ -74,7 +74,7 @@ class Gedung extends BaseController
 		]);
 
 		session()->setFlashdata('success', 'Data Gedung Berhasil Diedit.');
-		return redirect()->to('/gedung');
+		return redirect()->to('/admin/gedung');
 	}
 
 	public function delete($id)

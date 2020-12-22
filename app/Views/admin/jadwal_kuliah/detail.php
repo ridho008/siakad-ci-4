@@ -124,7 +124,9 @@
             <select name="matkul" id="matkul" class="form-control<?= ($validation->hasError('matkul')) ? ' is-invalid' : '' ?>">
               <option value="">-- Pilih Mata Kuliah --</option>
               <?php foreach($matkul as $m) : ?>
+                <?php if($m['semester'] == $tahunAkademik['semester']) : ?>
                 <option value="<?= $m['id_matkul']; ?>"><?= $m['smt'] .'/' .$m['matkul']. ' / ' . $m['sks'] ; ?> SKS</option>
+              <?php endif; ?>
               <?php endforeach; ?>
             </select>
             <div class="invalid-feedback">
