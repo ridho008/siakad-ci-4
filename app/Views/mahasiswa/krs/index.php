@@ -88,7 +88,8 @@
                   <th>Waktu</th>
                   <th><i class="fas fa-cogs"></i></th>
                </tr>
-               <?php $no = 1; foreach($matkulMhs as $mm) : ?>
+               <?php $sks = 0; $no = 1; foreach($matkulMhs as $mm) : ?>
+               <?php $sks += $mm['sks']; ?>
                   <tr>
                      <td><?= $no++; ?></td>
                      <td><?= $mm['kode_matkul']; ?></td>
@@ -100,11 +101,17 @@
                      <td><?= $mm['nama_dosen']; ?></td>
                      <td><?= $mm['hari']. '-' .$mm['waktu']; ?></td>
                      <td>
-                        <a href="/krs/delete/<?= $mm['id_krs']; ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                        <form action="/krs/delete">
+                           <?= csrf_field(); ?>
+                           <input type="hidden" name="_method" value="DELETE">
+                           <input type="hidden" name="id_krs" value="<?= $mm['id_krs']; ?>">
+                           <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                        </form>
                      </td>
                   </tr>
                <?php endforeach; ?>
             </table>
+            <h6>Jumlah SKS : <?= $sks; ?></h6>
          </div>
       </div>
    </div>
@@ -137,7 +144,12 @@
                   </tr>
                </thead>
                <tbody>
+                  <?php 
+                   // koneksi DB
+                   $db = \Config\Database::connect();
+                   ?>
                   <?php $no = 1; foreach($jadwalMatkul as $jm) : ?>
+                  <?php $jmlJadwal = $db->table('krs')->where('id_jadwal', $jm['id_jadwal'])->countAllResults(); ?>
                   <tr>
                      <td><?= $no++; ?></td>
                      <td><?= $jm['kode_matkul']; ?></td>
@@ -147,13 +159,17 @@
                      <td><?= $jm['nama_kelas']; ?></td>
                      <td><?= $jm['ruangan']; ?></td>
                      <td><?= $jm['nama_dosen']; ?></td>
-                     <td>0/<?= $jm['quota']; ?></td>
+                     <td><?= $jmlJadwal. '/' .$jm['quota']; ?></td>
                      <td><?= $jm['hari']. '-' .$jm['waktu']; ?></td>
                      <td>
-                        <form action="/krs/create" method="post">
-                           <input type="hidden" name="id_jadwal" value="<?= $jm['id_jadwal']; ?>">
-                           <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i></button>
-                        </form>
+                        <?php if($jmlJadwal == $jm['quota']) : ?>
+                           <span class="badge badge-danger">Penuh</span>
+                        <?php else: ?>
+                           <form action="/krs/create" method="post">
+                              <input type="hidden" name="id_jadwal" value="<?= $jm['id_jadwal']; ?>">
+                              <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i></button>
+                           </form>
+                        <?php endif; ?>
                         <!-- <a href="<?= base_url('/mahasiswa/krs/create/' . $jm['id_jadwal']); ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i></a> -->
                      </td>
                   </tr>

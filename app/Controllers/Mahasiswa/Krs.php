@@ -17,13 +17,15 @@ class Krs extends BaseController
 
    public function index()
    {
+      $mhs = $this->krsModel->getMhsById();
+      $ta = $this->jadwalKuliahModel->tahunAktif();
       $data = [
          'title' => 'Kartu Rencana Studi',
          'validation' => \Config\Services::validation(),
          'tahunAka' => $this->jadwalKuliahModel->tahunAktif(),
          'mhs' => $this->krsModel->dataMhs(),
-         'jadwalMatkul' => $this->krsModel->daftarMatkul(),
-         'matkulMhs' => $this->krsModel->dataKrs()
+         'jadwalMatkul' => $this->krsModel->daftarMatkul($ta['id_ta']),
+         'matkulMhs' => $this->krsModel->dataKrs($mhs['id_mhs'], $ta['id_ta'])
       ];
       return view('mahasiswa/krs/index', $data);
    }
@@ -39,6 +41,13 @@ class Krs extends BaseController
          'id_ta' => $tahunAktif['id_ta']
       ]);
       session()->setFlashdata('success', 'Anda Berhasil Menambahkan Mata Kuliah');
+      return redirect()->to('/mahasiswa/krs');
+   }
+
+   public function destroy()
+   {
+      $this->krsModel->delete($this->request->getVar('id_krs'));
+      session()->setFlashdata('success', 'Data Matkul Berhasil Dihapus');
       return redirect()->to('/mahasiswa/krs');
    }
 

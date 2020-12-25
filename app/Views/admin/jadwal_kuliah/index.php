@@ -7,7 +7,6 @@
       <div class="col-md-12">
          <div class="row">
             <div class="col-md-6 mb-3">
-               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalKelas">Tambah Data Kelas</button>
                <form action="/gedung" method="post">
                   <div class="input-group mt-3">
                     <input type="text" class="form-control" autofocus="on" autocomplete="off" placeholder="cari..." name="keyword">

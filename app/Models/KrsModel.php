@@ -22,7 +22,7 @@ class KrsModel extends Model
                ->get()->getRowArray();
    }
 
-   public function daftarMatkul()
+   public function daftarMatkul($id_ta)
    {
       return $this->db->table('jadwal')
                ->join('prodi', 'prodi.id_prodi = jadwal.id_prodi', 'left')
@@ -30,6 +30,7 @@ class KrsModel extends Model
                ->join('dosen', 'dosen.id_dosen = jadwal.id_dosen', 'left')
                ->join('matkul', 'matkul.id_matkul = jadwal.id_matkul', 'left')
                ->join('ruangan', 'ruangan.id_ruangan = jadwal.id_ruangan', 'left')
+               ->where('id_ta', $id_ta)
                ->get()->getResultArray();
    }
 
@@ -47,7 +48,7 @@ class KrsModel extends Model
             ->get()->getRowArray();
    }
 
-   public function dataKrs()
+   public function dataKrs($id_mhs, $id_ta)
    {
       return $this->db->table('krs')
             ->join('jadwal', 'jadwal.id_jadwal = krs.id_jadwal', 'left')
@@ -56,8 +57,8 @@ class KrsModel extends Model
             ->join('dosen', 'dosen.id_dosen = jadwal.id_dosen', 'left')
             ->join('ruangan', 'ruangan.id_ruangan = jadwal.id_ruangan', 'left')
             ->join('tahun_akademik', 'tahun_akademik.id_ta = jadwal.id_ta', 'left')
-            ->join('mahasiswa', 'mahasiswa.id_prodi = jadwal.id_prodi', 'left')
-            ->where('mahasiswa.nim', session()->get('nim'))
+            ->where('id_mhs', $id_mhs)
+            ->where('krs.id_ta', $id_ta)
             ->get()->getResultArray();
    }
 }

@@ -56,6 +56,7 @@ $routes->get('/dosen', 'Dosen/Dosen::index');
 $routes->get('/mahasiswa', 'Mahasiswa/Mahasiswa::index');
 $routes->get('/mahasiswa/krs', 'Mahasiswa/Krs::index');
 $routes->add('/krs/create', 'Mahasiswa/Krs::tambahmatkul');
+$routes->get('/krs/delete', 'Mahasiswa/Krs::destroy');
 /**
  * --------------------------------------------------------------------
  * Additional Routing
