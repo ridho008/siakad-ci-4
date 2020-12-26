@@ -63,7 +63,7 @@
 <div class="row">
    <div class="col-md-6">
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalMatkulKrs">Tambah Mata Kuliah</button>
-      <a href="" class="btn btn-secondary mb-1">Cetak KRS</a>
+      <a href="/krs/print" target="_blank" class="btn btn-secondary mb-1">Cetak KRS</a>
       <?php if($validation->listErrors()) : ?>
       <div class="alert alert-danger" role="alert">
          <?= $validation->listErrors(); ?>

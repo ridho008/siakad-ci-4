@@ -59,6 +59,7 @@ class Filters extends BaseConfig
 				'mahasiswa/krs', 'mahasiswa/krs/*',
 				'krs/create', 'mahasiswa/krs/tambahmatkul*',
 				'krs/delete', 'mahasiswa/krs/destroy/*',
+				'krs/print', 'mahasiswa/krs/print/*',
 			]],
 			'toolbar',
 			//'honeypot'

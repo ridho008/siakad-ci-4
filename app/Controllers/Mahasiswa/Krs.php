@@ -51,6 +51,19 @@ class Krs extends BaseController
       return redirect()->to('/mahasiswa/krs');
    }
 
+   public function print()
+   {
+      $mhs = $this->krsModel->getMhsById();
+      $ta = $this->jadwalKuliahModel->tahunAktif();
+      $data = [
+         'title' => 'Print KRS',
+         'tahunAka' => $this->jadwalKuliahModel->tahunAktif(),
+         'mhs' => $this->krsModel->dataMhs(),
+         'matkulMhs' => $this->krsModel->dataKrs($mhs['id_mhs'], $ta['id_ta'])
+      ];
+      return view('mahasiswa/krs/print_krs', $data);
+   }
+
    //--------------------------------------------------------------------
 
 }
