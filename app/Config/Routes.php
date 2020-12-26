@@ -58,6 +58,9 @@ $routes->get('/mahasiswa/krs', 'Mahasiswa/Krs::index');
 $routes->add('/krs/create', 'Mahasiswa/Krs::tambahmatkul');
 $routes->get('/krs/delete', 'Mahasiswa/Krs::destroy');
 $routes->get('/krs/print', 'Mahasiswa/Krs::print');
+
+// Absensi
+$routes->get('/mahasiswa/absensi', 'Mahasiswa/Mahasiswa::absensi');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

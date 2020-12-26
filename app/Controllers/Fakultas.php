@@ -52,7 +52,7 @@ class Fakultas extends BaseController
 		]);
 
 		session()->setFlashdata('success', 'DataFakultas Berhasil Ditambahkan.');
-		return redirect()->to('/fakultas');
+		return redirect()->to('/admin/fakultas');
 	}
 
 	public function update($id)

@@ -143,6 +143,7 @@
       </a>
       <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" href="/mahasiswa/absensi">Absensi</a>
           <a class="collapse-item" href="/mahasiswa/krs">KRS</a>
           <a class="collapse-item" href="/mahasiswa/khs">KHS</a>
         </div>

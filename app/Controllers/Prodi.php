@@ -69,7 +69,7 @@ class Prodi extends BaseController
 				]
 			]
 		])) {
-			return redirect()->to('/prodi/create')->withInput();
+			return redirect()->to('/admin/prodi')->withInput();
 		}
 
 		$this->prodiModel->save([

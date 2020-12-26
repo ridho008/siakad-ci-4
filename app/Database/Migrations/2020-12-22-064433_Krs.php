@@ -4,6 +4,7 @@ use CodeIgniter\Database\Migration;
 
 class Krs extends Migration
 {
+  // public $pertemuan = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'p9', 'p10', 'p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18'];
 	public function up()
    {
      $this->forge->addField([
@@ -24,6 +25,96 @@ class Krs extends Migration
             'id_ta'       => [
                     'type'           => 'INT',
                     'constraint'     => 11,
+            ],
+            'p1'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p2'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p3'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p4'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p5'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p6'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p7'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p8'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p9'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p10'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p11'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p12'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p13'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p14'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p15'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p16'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p17'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
+            ],
+            'p18'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 1,
+                    'null' => true
             ]
         ]);
         $this->forge->addKey('id_krs', true);
