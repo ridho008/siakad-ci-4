@@ -28,4 +28,13 @@ class MahasiswaModel extends Model
       return $this->db->table('mahasiswa')
                ->countAllResults();
    }
+
+   public function updateFoto($foto)
+   {
+      $db      = \Config\Database::connect();
+      $builder = $db->table('mahasiswa');
+      $builder->set('foto_mhs', $foto);
+      $builder->where('nim', session()->get('nim'));
+      $builder->update();
+   }
 }

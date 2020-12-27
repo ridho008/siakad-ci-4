@@ -17,7 +17,6 @@ class Krs extends BaseController
 
    public function index()
    {
-      session()->get();
       $mhs = $this->krsModel->getMhsById();
       $ta = $this->jadwalKuliahModel->tahunAktif();
       $data = [
