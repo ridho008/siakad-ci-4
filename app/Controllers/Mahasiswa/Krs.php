@@ -17,6 +17,7 @@ class Krs extends BaseController
 
    public function index()
    {
+      session()->get();
       $mhs = $this->krsModel->getMhsById();
       $ta = $this->jadwalKuliahModel->tahunAktif();
       $data = [
@@ -24,7 +25,7 @@ class Krs extends BaseController
          'validation' => \Config\Services::validation(),
          'tahunAka' => $this->jadwalKuliahModel->tahunAktif(),
          'mhs' => $this->krsModel->dataMhs(),
-         'jadwalMatkul' => $this->krsModel->daftarMatkul($ta['id_ta']),
+         'jadwalMatkul' => $this->krsModel->daftarMatkul($ta['id_ta'], $mhs['id_prodi']),
          'matkulMhs' => $this->krsModel->dataKrs($mhs['id_mhs'], $ta['id_ta'])
       ];
       return view('mahasiswa/krs/index', $data);

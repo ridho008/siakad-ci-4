@@ -153,7 +153,7 @@
                   <tr>
                      <td><?= $no++; ?></td>
                      <td><?= $jm['kode_matkul']; ?></td>
-                     <td><?= $jm['matkul']; ?></td>
+                     <td><?= $jm['matkul']; ?> / <?= $jm['kode_prodi']; ?></td>
                      <td><?= $jm['sks']; ?></td>
                      <td><?= $jm['smt']; ?></td>
                      <td><?= $jm['nama_kelas']; ?></td>

@@ -22,7 +22,7 @@ class KrsModel extends Model
                ->get()->getRowArray();
    }
 
-   public function daftarMatkul($id_ta)
+   public function daftarMatkul($id_ta, $id_prodi)
    {
       return $this->db->table('jadwal')
                ->join('prodi', 'prodi.id_prodi = jadwal.id_prodi', 'left')
@@ -31,6 +31,7 @@ class KrsModel extends Model
                ->join('matkul', 'matkul.id_matkul = jadwal.id_matkul', 'left')
                ->join('ruangan', 'ruangan.id_ruangan = jadwal.id_ruangan', 'left')
                ->where('id_ta', $id_ta)
+               ->where('jadwal.id_prodi', $id_prodi)
                ->get()->getResultArray();
    }
 
