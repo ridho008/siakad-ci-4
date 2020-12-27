@@ -119,11 +119,11 @@
     <li class="nav-item active">
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
       <i class="fas fa-fw fa-folder"></i>
-      <span>Kelola Data Dosen</span>
+      <span>Akademik</span>
     </a>
     <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="#">Menu 1</a>
+        <a class="collapse-item" href="/dosen/jadwal">Jadwal Mengajar</a>
       </div>
     </div>
   </li>

@@ -52,7 +52,8 @@ class Filters extends BaseConfig
 				'setting/tahunaka', 'tahunAka/*'
 			]],
 			'dosenfilter' => ['except' => [
-				'dosen', 'dosen/dosen/*'
+				'dosen', 'dosen/dosen/*',
+				'dosen/jadwal', 'dosen/dosen/jadwalMengajar/*'
 			]],
 			'mahasiswafilter' => ['except' => [
 				'mahasiswa', 'mahasiswa/mahasiswa/*',

@@ -8,7 +8,7 @@
       <?php if(session()->getFlashdata('pesan')) : ?>
       <div class="alert alert-success" role="alert"><?= session()->getFlashdata('pesan'); ?></div>
       <?php endif; ?>
-     <div class="card border-left-primary shadow h-100 py-2">
+     <div class="card border-left-primary border shadow h-100 py-2">
        <div class="card-body">
          <div class="row no-gutters align-items-center">
            <div class="col mr-2 text-center">

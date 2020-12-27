@@ -1,9 +1,16 @@
 <?php namespace App\Controllers\Dosen;
 
 use App\Controllers\BaseController;
+use App\Models\DosenModel;
 
 class Dosen extends BaseController
 {
+   protected $dosenModel;
+
+   public function __construct()
+   {
+      $this->dosenModel = new DosenModel();
+   }
 
    public function index()
    {
@@ -11,6 +18,15 @@ class Dosen extends BaseController
          'title' => 'Dashboard Dosen'
       ];
       return view('dosen/index', $data);
+   }
+
+   public function jadwalMengajar()
+   {
+      $data = [
+         'title' => 'Jadwal Mengajar',
+         'jadwal' => $this->dosenModel->jadwalDosen()
+      ];
+      return view('dosen/jadwal_mengajar', $data);
    }
 
    //--------------------------------------------------------------------
