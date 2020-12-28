@@ -42,11 +42,11 @@
 </div>
 <div class="row">
    <div class="col-md-12">
-      <?php if(session()->getFlashdata('success')) : ?>
-      <div class="alert alert-success" role="alert"><?= session()->getFlashdata('success'); ?></div>
-      <?php endif; ?>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalAbsensi">Isi Absensi</button>
-      <a href="/krs/print" target="_blank" class="btn btn-secondary mb-1">Cetak KRS</a>
+      <form action="/dosen/print/" method="post" target="_blank">
+        <input type="text" name="id_jadwal" value="<?= $jadwal['id_jadwal']; ?>">
+        <button type="submit" target="_blank" class="btn btn-secondary mb-1">Cetak Absensi</button>
+      </form>
       <div class="table-responsive">
          <table class="table table-bordered">
             <tr class="table-primary">

@@ -84,6 +84,19 @@ class Dosen extends BaseController
       return redirect()->to('/dosen/absen');
    }
 
+   public function print_absensi()
+   {
+      $id_jadwal = $this->request->getVar('id_jadwal');
+      $jadwal = $this->dosenModel->detailJadwal($id_jadwal);
+      $data = [
+         'title' => 'Print Absensi',
+         'jadwal' => $jadwal,
+         'mhs' => $this->dosenModel->getMhsById($id_jadwal),
+         'validation' => \Config\Services::validation()
+      ];
+      return view('dosen/print_absensi', $data);
+   }
+
    //--------------------------------------------------------------------
 
 }

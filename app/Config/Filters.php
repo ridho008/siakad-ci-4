@@ -56,7 +56,8 @@ class Filters extends BaseConfig
 				'dosen/jadwal', 'dosen/dosen/jadwalMengajar/*',
 				'dosen/absen', 'dosen/dosen/absenKelas/*',
 				'dosen/absensi', 'dosen/dosen/absensi/*',
-				'dosen/saveabsen', 'dosen/dosen/simpanAbsensi/*'
+				'dosen/saveabsen', 'dosen/dosen/simpanAbsensi/*',
+				'dosen/print', 'dosen/dosen/print_absensi/*'
 			]],
 			'mahasiswafilter' => ['except' => [
 				'mahasiswa', 'mahasiswa/mahasiswa/*',
