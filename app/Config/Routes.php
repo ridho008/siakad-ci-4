@@ -52,6 +52,8 @@ $routes->get('/setting/tahunaka', 'TahunAka::settings');
 // Dashboard Dosen
 $routes->get('/dosen', 'Dosen/Dosen::index');
 $routes->get('/dosen/jadwal', 'Dosen/Dosen::jadwalMengajar');
+$routes->get('/dosen/absen', 'Dosen/Dosen::absenKelas');
+$routes->add('/dosen/absensi', 'Dosen/Dosen::absensi');
 
 // Dashboard Mahasiswa
 $routes->get('/mahasiswa', 'Mahasiswa/Mahasiswa::index');

@@ -124,6 +124,7 @@
     <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <a class="collapse-item" href="/dosen/jadwal">Jadwal Mengajar</a>
+        <a class="collapse-item" href="/dosen/absen">Absen Kelas</a>
       </div>
     </div>
   </li>

@@ -29,6 +29,27 @@ class Dosen extends BaseController
       return view('dosen/jadwal_mengajar', $data);
    }
 
+   public function absenKelas()
+   {
+      $data = [
+         'title' => 'Absen Kelas',
+         'absen' => $this->dosenModel->jadwalDosen()
+      ];
+      return view('dosen/absen_kelas', $data);
+   }
+
+   public function absensi()
+   {
+      $id_jadwal = $this->request->getVar('id_jadwal');
+      $jadwal = $this->dosenModel->detailJadwal($id_jadwal);
+      $data = [
+         'title' => 'Absensi Kelas ' . $jadwal['nama_kelas']. ' ' . $jadwal['tahun_aka'],
+         'jadwal' => $jadwal,
+         'mhs' => $this->dosenModel->getMhsById($id_jadwal)
+      ];
+      return view('dosen/absensi', $data);
+   }
+
    //--------------------------------------------------------------------
 
 }

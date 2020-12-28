@@ -53,7 +53,9 @@ class Filters extends BaseConfig
 			]],
 			'dosenfilter' => ['except' => [
 				'dosen', 'dosen/dosen/*',
-				'dosen/jadwal', 'dosen/dosen/jadwalMengajar/*'
+				'dosen/jadwal', 'dosen/dosen/jadwalMengajar/*',
+				'dosen/absen', 'dosen/dosen/absenKelas/*',
+				'dosen/absensi', 'dosen/dosen/absensi/*'
 			]],
 			'mahasiswafilter' => ['except' => [
 				'mahasiswa', 'mahasiswa/mahasiswa/*',
