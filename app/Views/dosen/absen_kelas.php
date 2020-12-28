@@ -5,6 +5,9 @@
 
 <div class="row">
    <div class="col-md-12">
+      <?php if(session()->getFlashdata('success')) : ?>
+      <div class="alert alert-success" role="alert"><?= session()->getFlashdata('success'); ?></div>
+      <?php endif; ?>
       <div class="table-responsive">
          <table class="table table-bordered table-striped">
             <thead>
@@ -26,6 +29,7 @@
                   <td><?= $j['nama_kelas']. ' / ' .$j['tahun_aka']; ?></td>
                   <td><?= $j['ruangan']; ?></td>
                   <td>
+                     <!-- <a href="/dosen/absensi/<?= $j['id_jadwal']; ?>"><i class="fas fa-calendar"></i> Absensi</a> -->
                      <form action="/dosen/absensi" method="post">
                         <input type="hidden" name="id_jadwal" value="<?= $j['id_jadwal']; ?>">
                         <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-calendar"></i> Absensi</button>

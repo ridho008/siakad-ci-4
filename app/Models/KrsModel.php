@@ -8,7 +8,7 @@ class KrsModel extends Model
 {
    protected $table = 'krs';
    protected $primaryKey = 'id_krs';
-   protected $allowedFields = ['id_mhs', 'id_jadwal', 'id_ta'];
+   protected $allowedFields = ['id_mhs', 'id_jadwal', 'id_ta', 'p1'];
 
    public function dataMhs()
    {

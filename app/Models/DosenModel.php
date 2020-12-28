@@ -48,4 +48,11 @@ class DosenModel extends Model
             ->where('krs.id_jadwal', $id_jadwal)
             ->get()->getResultArray();
    }
+
+   public function simpanAbsensi($data)
+   {
+      $this->db->table('krs')
+                     ->where('id_krs', $data['id_krs'])
+                     ->update($data);
+   }
 }

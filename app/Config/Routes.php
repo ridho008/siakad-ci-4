@@ -54,6 +54,7 @@ $routes->get('/dosen', 'Dosen/Dosen::index');
 $routes->get('/dosen/jadwal', 'Dosen/Dosen::jadwalMengajar');
 $routes->get('/dosen/absen', 'Dosen/Dosen::absenKelas');
 $routes->add('/dosen/absensi', 'Dosen/Dosen::absensi');
+$routes->add('/dosen/saveabsen', 'Dosen/Dosen::simpanAbsensi');
 
 // Dashboard Mahasiswa
 $routes->get('/mahasiswa', 'Mahasiswa/Mahasiswa::index');

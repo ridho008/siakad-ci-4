@@ -42,7 +42,10 @@
 </div>
 <div class="row">
    <div class="col-md-12">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalMatkulKrs">Tambah Mata Kuliah</button>
+      <?php if(session()->getFlashdata('success')) : ?>
+      <div class="alert alert-success" role="alert"><?= session()->getFlashdata('success'); ?></div>
+      <?php endif; ?>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalAbsensi">Isi Absensi</button>
       <a href="/krs/print" target="_blank" class="btn btn-secondary mb-1">Cetak KRS</a>
       <div class="table-responsive">
          <table class="table table-bordered">
@@ -237,4 +240,194 @@
       </div>
    </div>
 </div>
+
+<div class="modal fade" id="formModalAbsensi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Isi <?= $title; ?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/dosen/saveabsen" method="post">
+         <input type="hidden" name="id_jadwal" value="<?= $jadwal['id_jadwal']; ?>">
+         <?= csrf_field(); ?>
+         <div class="table-responsive">
+            <table class="table table-bordered text-sm-center">
+               <tr class="table-primary">
+                  <th rowspan="2">No</th>
+                  <th rowspan="2">NIM</th>
+                  <th rowspan="2">Mahasiswa</th>
+                  <th colspan="18">Pertemuan</th>
+               </tr>
+               <tr class="table-primary">
+                  <?php for($i = 1; $i <= 18; $i++) : ?>
+                   <td><?= $i; ?></td>
+                  <?php endfor; ?>
+               </tr>
+               <?php $no = 1; foreach($mhs as $mm) : ?>
+               <input type="hidden" name="id_krs<?= $mm['id_krs']; ?>" value="<?= $mm['id_krs']; ?>">
+                  <tr>
+                     <td><?= $no++; ?></td>
+                     <td><?= $mm['nim']; ?></td>
+                     <td><?= $mm['nama_mhs']; ?></td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p1">
+                           <option value="0" <?= ($mm['p1'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p1'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p1'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p2">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p2'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p2'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p2'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p3">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p3'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p3'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p3'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p4">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p4'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p4'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p4'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p5">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p5'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p5'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p5'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p6">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p6'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p6'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p6'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p7">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p7'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p7'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p7'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p8">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p8'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p8'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p8'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p9">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p9'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p9'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p9'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p10">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p10'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p10'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p10'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p11">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p11'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p11'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p11'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p12">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p12'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p12'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p12'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p13">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p13'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p13'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p13'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p14">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p14'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p14'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p14'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p15">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p15'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p15'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p15'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p16">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p16'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p16'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p16'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p17">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p17'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p17'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p17'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select name="<?= $mm['id_krs']; ?>p18">
+                           <option value=""></option>
+                           <option value="0" <?= ($mm['p18'] == 0) ? 'selected' : ''  ?>>A</option>
+                           <option value="1" <?= ($mm['p18'] == 1) ? 'selected' : ''  ?>>I</option>
+                           <option value="2" <?= ($mm['p18'] == 2) ? 'selected' : ''  ?>>H</option>
+                        </select>
+                     </td>
+                  </tr>
+               <?php endforeach; ?>
+            </table>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+           <button type="submit" class="btn btn-primary">Tambah</button>
+         </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <?= $this->endSection(); ?>
