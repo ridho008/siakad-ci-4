@@ -1,7 +1,7 @@
 <?= $this->extend('layout/app'); ?>
 <?= $this->section('content'); ?>
 
-<h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+<h1 class="h3 mb-4 text-gray-800"><?= $title; ?> / <?= $tahunAktif['semester']; ?></h1>
 <div class="row">
    <div class="col-md-4">
       <div class="table-responsive">
@@ -35,6 +35,11 @@
                <th>Dosen PA</th>
                <th>:</th>
                <th><?= $jadwal['nama_dosen']; ?></th>
+            </tr>
+            <tr>
+               <th>Tahun Ajaran</th>
+               <th>:</th>
+               <th><?= $tahunAktif['tahun_aka']; ?></th>
             </tr>
          </table>
       </div>

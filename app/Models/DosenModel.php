@@ -15,7 +15,7 @@ class DosenModel extends Model
 		return $this->table('dosen')->like('kode_dosen', $keyword)->orLike('nidn', $keyword)->orLike('nama_dosen', $keyword);
 	}
 
-   public function jadwalDosen()
+   public function jadwalDosen($id_ta)
    {
       return $this->db->table('jadwal')
             ->join('matkul', 'matkul.id_matkul = jadwal.id_matkul', 'left')
@@ -25,6 +25,7 @@ class DosenModel extends Model
             ->join('kelas', 'kelas.id_kelas = jadwal.id_kelas', 'left')
             ->join('tahun_akademik', 'tahun_akademik.id_ta = jadwal.id_ta', 'left')
             ->where('dosen.nidn', session()->get('nidn'))
+            ->where('jadwal.id_ta', $id_ta)
             ->get()->getResultArray();
    }
 

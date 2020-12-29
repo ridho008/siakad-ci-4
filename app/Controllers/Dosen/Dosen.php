@@ -2,14 +2,17 @@
 
 use App\Controllers\BaseController;
 use App\Models\DosenModel;
+use App\Models\JadwalKuliahModel;
 
 class Dosen extends BaseController
 {
    protected $dosenModel;
+   protected $jadwalKuliahModel;
 
    public function __construct()
    {
       $this->dosenModel = new DosenModel();
+      $this->jadwalKuliahModel = new JadwalKuliahModel();
    }
 
    public function index()
@@ -22,18 +25,22 @@ class Dosen extends BaseController
 
    public function jadwalMengajar()
    {
+      $ta = $this->jadwalKuliahModel->tahunAktif();
       $data = [
          'title' => 'Jadwal Mengajar',
-         'jadwal' => $this->dosenModel->jadwalDosen()
+         'jadwal' => $this->dosenModel->jadwalDosen($ta['id_ta']),
+         'tahunAktif' => $ta
       ];
       return view('dosen/jadwal_mengajar', $data);
    }
 
    public function absenKelas()
    {
+      $ta = $this->jadwalKuliahModel->tahunAktif();
       $data = [
          'title' => 'Absen Kelas',
-         'absen' => $this->dosenModel->jadwalDosen()
+         'tahunAktif' => $ta,
+         'absen' => $this->dosenModel->jadwalDosen($ta['id_ta']),
       ];
       return view('dosen/absen_kelas', $data);
    }
@@ -41,10 +48,12 @@ class Dosen extends BaseController
    public function absensi()
    {
       // dd($id_jadwal);
+      $ta = $this->jadwalKuliahModel->tahunAktif();
       $id_jadwal = $this->request->getVar('id_jadwal');
       $jadwal = $this->dosenModel->detailJadwal($id_jadwal);
       $data = [
          'title' => 'Absensi Kelas ' . $jadwal['nama_kelas']. ' ' . $jadwal['tahun_aka'],
+         'tahunAktif' => $this->jadwalKuliahModel->tahunAktif(),
          'jadwal' => $jadwal,
          'mhs' => $this->dosenModel->getMhsById($id_jadwal),
          'validation' => \Config\Services::validation()
