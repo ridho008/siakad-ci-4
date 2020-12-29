@@ -56,6 +56,8 @@ $routes->get('/dosen/absen', 'Dosen/Dosen::absenKelas');
 $routes->add('/dosen/absensi', 'Dosen/Dosen::absensi');
 $routes->add('/dosen/saveabsen', 'Dosen/Dosen::simpanAbsensi');
 $routes->add('/dosen/print', 'Dosen/Dosen::print_absensi');
+$routes->get('/dosen/nilaimhs', 'Dosen/Dosen::nilaiMhs');
+$routes->add('/dosen/datanilai', 'Dosen/Dosen::dataNilai');
 
 // Dashboard Mahasiswa
 $routes->get('/mahasiswa', 'Mahasiswa/Mahasiswa::index');

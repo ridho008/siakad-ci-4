@@ -125,6 +125,7 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <a class="collapse-item" href="/dosen/jadwal">Jadwal Mengajar</a>
         <a class="collapse-item" href="/dosen/absen">Absen Kelas</a>
+        <a class="collapse-item" href="/dosen/nilaimhs">Nilai Mahasiswa</a>
       </div>
     </div>
   </li>

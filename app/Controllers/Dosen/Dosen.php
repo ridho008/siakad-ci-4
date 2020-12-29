@@ -106,6 +106,33 @@ class Dosen extends BaseController
       return view('dosen/print_absensi', $data);
    }
 
+   // Menu Nilai Mahasiswa
+   public function nilaiMhs()
+   {
+      $ta = $this->jadwalKuliahModel->tahunAktif();
+      $data = [
+         'title' => 'Nilai Mahasiswa',
+         'tahunAktif' => $ta,
+         'absen' => $this->dosenModel->jadwalDosen($ta['id_ta']),
+      ];
+      return view('dosen/nilai_mahasiswa', $data);
+   }
+
+   public function dataNilai()
+   {
+      $ta = $this->jadwalKuliahModel->tahunAktif();
+      $id_jadwal = $this->request->getVar('id_jadwal');
+      $jadwal = $this->dosenModel->detailJadwal($id_jadwal);
+      $data = [
+         'title' => 'Data Nilai ' . $jadwal['nama_kelas']. ' ' . $jadwal['tahun_aka'],
+         'tahunAktif' => $this->jadwalKuliahModel->tahunAktif(),
+         'jadwal' => $jadwal,
+         'mhs' => $this->dosenModel->getMhsById($id_jadwal),
+         'validation' => \Config\Services::validation()
+      ];
+      return view('dosen/data_nilai', $data);
+   }
+
    //--------------------------------------------------------------------
 
 }

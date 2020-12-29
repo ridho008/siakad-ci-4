@@ -47,11 +47,15 @@
 </div>
 <div class="row">
    <div class="col-md-12">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalAbsensi">Isi Absensi</button>
-      <form action="/dosen/print/" method="post" target="_blank">
-        <input type="text" name="id_jadwal" value="<?= $jadwal['id_jadwal']; ?>">
-        <button type="submit" target="_blank" class="btn btn-secondary mb-1">Cetak Absensi</button>
-      </form>
+      <div class="row">
+        <div class="col-md-6">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModalAbsensi">Isi Absensi</button>
+          <form action="/dosen/print/" method="post" target="_blank">
+            <input type="hidden" name="id_jadwal" value="<?= $jadwal['id_jadwal']; ?>">
+            <button type="submit" target="_blank" class="btn btn-secondary mb-1">Cetak Absensi</button>
+          </form>
+        </div>
+      </div>
       <div class="table-responsive">
          <table class="table table-bordered">
             <tr class="table-primary">
