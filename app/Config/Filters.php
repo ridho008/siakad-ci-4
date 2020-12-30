@@ -60,7 +60,8 @@ class Filters extends BaseConfig
 				'dosen/print', 'dosen/dosen/print_absensi/*',
 				'dosen/nilaimhs', 'dosen/dosen/nilaiMhs/*',
 				'dosen/datanilai', 'dosen/dosen/dataNilai/*',
-				'dosen/simpannilai', 'dosen/dosen/simpanNilai/*'
+				'dosen/simpannilai', 'dosen/dosen/simpanNilai/*',
+				'dosen/printnilai', 'dosen/dosen/printNilai/*'
 			]],
 			'mahasiswafilter' => ['except' => [
 				'mahasiswa', 'mahasiswa/mahasiswa/*',

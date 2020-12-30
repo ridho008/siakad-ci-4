@@ -42,7 +42,7 @@ class Dosen extends BaseController
          'tahunAktif' => $ta,
          'absen' => $this->dosenModel->jadwalDosen($ta['id_ta']),
       ];
-      return view('dosen/absen_kelas', $data);
+      return view('dosen/absenKelas/absen_kelas', $data);
    }
 
    public function absensi()
@@ -58,7 +58,7 @@ class Dosen extends BaseController
          'mhs' => $this->dosenModel->getMhsById($id_jadwal),
          'validation' => \Config\Services::validation()
       ];
-      return view('dosen/absensi', $data);
+      return view('dosen/absenKelas/absensi', $data);
    }
 
    public function simpanAbsensi()
@@ -103,7 +103,7 @@ class Dosen extends BaseController
          'mhs' => $this->dosenModel->getMhsById($id_jadwal),
          'validation' => \Config\Services::validation()
       ];
-      return view('dosen/print_absensi', $data);
+      return view('dosen/absenKelas/print_absensi', $data);
    }
 
    // Menu Nilai Mahasiswa
@@ -115,7 +115,7 @@ class Dosen extends BaseController
          'tahunAktif' => $ta,
          'absen' => $this->dosenModel->jadwalDosen($ta['id_ta']),
       ];
-      return view('dosen/nilai_mahasiswa', $data);
+      return view('dosen/nilaiMahasiswa/nilai_mahasiswa', $data);
    }
 
    public function dataNilai()
@@ -130,7 +130,7 @@ class Dosen extends BaseController
          'mhs' => $this->dosenModel->getMhsById($id_jadwal),
          'validation' => \Config\Services::validation()
       ];
-      return view('dosen/data_nilai', $data);
+      return view('dosen/nilaiMahasiswa/data_nilai', $data);
    }
 
    public function simpanNilai()
@@ -142,7 +142,9 @@ class Dosen extends BaseController
          $tugas = $this->request->getVar('nilai_tugas' . $value['id_krs']);
          $uts = $this->request->getVar('nilai_uts' . $value['id_krs']);
          $uas = $this->request->getVar('nilai_uas' . $value['id_krs']);
+         // na = nilai akhir
          $na = ($abs * 15 / 100) * ($tugas * 15 / 100) * ($uts * 30 / 100) * ($uas * 40 / 100);
+         // nh = nilai huruf
          if($na >= 85) :
             $nh = "A";
          elseif ($na < 85 && $na >= 75 ) :
@@ -167,6 +169,19 @@ class Dosen extends BaseController
       }
       session()->setFlashdata('success', 'Data Nilai Mahasiswa Berhasil Disimpan.');
       return redirect()->to('/dosen/nilaimhs');
+   }
+
+   public function printNilai()
+   {
+      $id_jadwal = $this->request->getVar('id_jadwal');
+      $jadwal = $this->dosenModel->detailJadwal($id_jadwal);
+      $data = [
+         'title' => 'Print Nilai Mahasiswa',
+         'tahunAktif' => $this->jadwalKuliahModel->tahunAktif(),
+         'jadwal' => $jadwal,
+         'mhs' => $this->dosenModel->getMhsById($id_jadwal)
+      ];
+      return view('dosen/nilaiMahasiswa/print_nilai', $data);
    }
 
    //--------------------------------------------------------------------
