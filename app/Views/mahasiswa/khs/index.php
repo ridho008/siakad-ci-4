@@ -62,7 +62,7 @@
 
 <div class="row">
    <div class="col-md-6">
-      <a href="/krs/print" target="_blank" class="btn btn-secondary mb-1">Cetak KRS</a>
+      <a href="/khs/printkhs" target="_blank" class="btn btn-secondary mb-1">Cetak KRS</a>
    </div>
       <div class="col-md-12">
          <div class="table-responsive">

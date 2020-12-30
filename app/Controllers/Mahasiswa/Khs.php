@@ -20,8 +20,7 @@ class Khs extends BaseController
       $mhs = $this->krsModel->getMhsById();
       $ta = $this->jadwalKuliahModel->tahunAktif();
       $data = [
-         'title' => 'Kartu Rencana Studi',
-         'validation' => \Config\Services::validation(),
+         'title' => 'Kartu Hasil Studi',
          'tahunAka' => $this->jadwalKuliahModel->tahunAktif(),
          'mhs' => $this->krsModel->dataMhs(),
          'jadwalMatkul' => $this->krsModel->daftarMatkul($ta['id_ta'], $mhs['id_prodi']),
@@ -56,12 +55,12 @@ class Khs extends BaseController
       $mhs = $this->krsModel->getMhsById();
       $ta = $this->jadwalKuliahModel->tahunAktif();
       $data = [
-         'title' => 'Print KRS',
+         'title' => 'Print KHS',
          'tahunAka' => $this->jadwalKuliahModel->tahunAktif(),
          'mhs' => $this->krsModel->dataMhs(),
          'matkulMhs' => $this->krsModel->dataKrs($mhs['id_mhs'], $ta['id_ta'])
       ];
-      return view('mahasiswa/krs/print_krs', $data);
+      return view('mahasiswa/khs/print_khs', $data);
    }
 
    //--------------------------------------------------------------------

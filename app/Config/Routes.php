@@ -75,6 +75,7 @@ $routes->get('/mahasiswa/absensi', 'Mahasiswa/Mahasiswa::absensi');
 
 // Kartu Rencana Studi (KHS)
 $routes->get('/mahasiswa/khs', 'Mahasiswa/Khs::index');
+$routes->get('/khs/printkhs', 'Mahasiswa/Khs::print');
 /**
  * --------------------------------------------------------------------
  * Additional Routing
