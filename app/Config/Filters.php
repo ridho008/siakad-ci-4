@@ -66,6 +66,7 @@ class Filters extends BaseConfig
 			'mahasiswafilter' => ['except' => [
 				'mahasiswa', 'mahasiswa/mahasiswa/*',
 				'mahasiswa/krs', 'mahasiswa/krs/*',
+				'mahasiswa/khs', 'mahasiswa/khs/*',
 				'krs/create', 'mahasiswa/krs/tambahmatkul*',
 				'krs/delete', 'mahasiswa/krs/destroy/*',
 				'krs/print', 'mahasiswa/krs/print/*',

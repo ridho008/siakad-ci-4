@@ -60,6 +60,7 @@ $routes->get('/dosen/nilaimhs', 'Dosen/Dosen::nilaiMhs');
 $routes->add('/dosen/datanilai', 'Dosen/Dosen::dataNilai');
 $routes->add('/dosen/simpannilai', 'Dosen/Dosen::simpanNilai');
 $routes->add('/dosen/printnilai/', 'Dosen/Dosen::printNilai');
+$routes->add('/dosen/upload', 'Dosen/Dosen::uploadFotoDosen');
 
 // Dashboard Mahasiswa
 $routes->get('/mahasiswa', 'Mahasiswa/Mahasiswa::index');
@@ -71,6 +72,9 @@ $routes->add('/mahasiswa/upload', 'Mahasiswa/Mahasiswa::upload');
 
 // Absensi
 $routes->get('/mahasiswa/absensi', 'Mahasiswa/Mahasiswa::absensi');
+
+// Kartu Rencana Studi (KHS)
+$routes->get('/mahasiswa/khs', 'Mahasiswa/Khs::index');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

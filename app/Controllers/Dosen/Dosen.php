@@ -18,9 +18,35 @@ class Dosen extends BaseController
    public function index()
    {
       $data = [
-         'title' => 'Dashboard Dosen'
+         'title' => 'Dashboard Dosen',
+         'dosen' => $this->dosenModel->getDosenById(),
+         'tahunAka' => $this->jadwalKuliahModel->tahunAktif(),
+         'validation' => \Config\Services::validation()
       ];
       return view('dosen/index', $data);
+   }
+
+   public function uploadFotoDosen()
+   {
+      if(!$this->validate([
+         'foto' => [
+            'rules' => 'uploaded[foto]|max_size[foto,1024]|mime_in[foto,image/png,image/jpg,image/jpeg]|is_image[foto]|ext_in[foto,png,jpg,gif]'
+         ]
+      ])) {
+         return redirect()->to('/dosen')->withInput();
+      }
+
+      $foto = $this->request->getFile('foto');
+      // acak foto
+      $acakFoto = $foto->getRandomName();
+      // pindahkan ke folder img
+      $foto->move('img/dosen', $acakFoto);
+      // hapus foto lama
+      unlink('img/dosen/' . $this->request->getVar('fotoLama'));
+
+      $this->dosenModel->updateFoto($acakFoto);
+      session()->setFlashdata('pesan', 'Foto Profil Berhasil Diubah.');
+      return redirect()->to('/dosen');
    }
 
    public function jadwalMengajar()
@@ -147,14 +173,19 @@ class Dosen extends BaseController
          // nh = nilai huruf
          if($na >= 85) :
             $nh = "A";
+            $bobot = 4;
          elseif ($na < 85 && $na >= 75 ) :
             $nh = "B";
+            $bobot = 3;
          elseif ($na < 75 && $na >= 65 ) :
             $nh = "C";
+            $bobot = 2;
          elseif ($na < 65 && $na >= 55 ) :
             $nh = "D";
+            $bobot = 1;
          else :
             $nh = "E";
+            $bobot = 0;
          endif;
          $data = [
             'id_krs' => $this->request->getVar('id_krs' . $value['id_krs']),
@@ -163,7 +194,8 @@ class Dosen extends BaseController
             'nilai_uts' => $this->request->getVar('nilai_uts' . $value['id_krs']),
             'nilai_uas' => $this->request->getVar('nilai_uas' . $value['id_krs']),
             'nilai_akhir' => number_format($na,0),
-            'nilai_huruf' => $nh
+            'nilai_huruf' => $nh,
+            'bobot' => $bobot
          ];
          $this->dosenModel->simpanAbsensi($data);
       }

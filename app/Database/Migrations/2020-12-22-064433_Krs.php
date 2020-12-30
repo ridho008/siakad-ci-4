@@ -151,6 +151,12 @@ class Krs extends Migration
                     'constraint'     => 11,
                     'null' => true,
                     'default' => '-'
+            ],
+            'bobot'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 11,
+                    'null' => true,
+                    'default' => 0
             ]
         ]);
         $this->forge->addKey('id_krs', true);

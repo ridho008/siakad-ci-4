@@ -66,7 +66,7 @@
                <th rowspan="2">No</th>
                <th rowspan="2">NIM</th>
                <th rowspan="2">Mahasiswa</th>
-               <th colspan="6">Nilai</th>
+               <th colspan="7">Nilai</th>
             </tr>
             <tr class="table-primary">
                <th>Absensi (15%)</th>
@@ -75,6 +75,7 @@
                <th width="100">UAS (40%)</th>
                <th>NA</th>
                <th>Huruf</th>
+               <th>Bobot</th>
             </tr>
             <?php $no = 1; foreach($mhs as $mm) : ?>
             <?php 
@@ -98,6 +99,7 @@
                   </td>
                   <td><?= $mm['nilai_akhir']; ?></td>
                   <td><?= $mm['nilai_huruf']; ?></td>
+                  <td><?= $mm['bobot']; ?></td>
             </tr>
             <?php endforeach; ?>
          </table>

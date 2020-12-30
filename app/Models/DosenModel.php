@@ -50,10 +50,26 @@ class DosenModel extends Model
             ->get()->getResultArray();
    }
 
+   public function getDosenById()
+   {
+      return $this->db->table('dosen')
+            ->where('nidn', session()->get('nidn'))
+            ->get()->getRowArray();
+   }
+
    public function simpanAbsensi($data)
    {
       $this->db->table('krs')
                      ->where('id_krs', $data['id_krs'])
                      ->update($data);
+   }
+
+   public function updateFoto($foto)
+   {
+      $db      = \Config\Database::connect();
+      $builder = $db->table('dosen');
+      $builder->set('foto_dosen', $foto);
+      $builder->where('nidn', session()->get('nidn'));
+      $builder->update();
    }
 }
