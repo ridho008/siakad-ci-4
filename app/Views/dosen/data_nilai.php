@@ -58,6 +58,9 @@
         </div>
       </div>
       <div class="table-responsive">
+         <form action="/dosen/simpannilai" method="post">
+            <?= csrf_field(); ?>
+         <input type="hidden" name="id_jadwal" value="<?= $jadwal['id_jadwal']; ?>">
          <table class="table table-bordered text-sm-center">
             <tr class="table-primary">
                <th rowspan="2">No</th>
@@ -73,24 +76,33 @@
                <th>NA</th>
                <th>Huruf</th>
             </tr>
+            <?php $no = 1; foreach($mhs as $mm) : ?>
+            <?php 
+            $absensi = ($mm['p1'] + $mm['p2'] + $mm['p3'] + $mm['p4'] + $mm['p5'] + $mm['p6'] + $mm['p7'] + $mm['p8'] + $mm['p9'] + $mm['p10'] + $mm['p11'] + $mm['p12'] + $mm['p13'] + $mm['p14'] + $mm['p15'] + $mm['p16'] + $mm['p17'] + $mm['p18']) / 36 * 100;
+            ?>
+            <input type="hidden" name="id_krs<?= $mm['id_krs']; ?>" value="<?= $mm['id_krs']; ?>">
+            <input type="hidden" name="nilai_absen<?= $mm['id_krs']; ?>" value="<?= number_format($absensi,0); ?>">
             <tr>
-               <?php $no = 1; foreach($mhs as $mm) : ?>
                   <td><?= $no++; ?></td>
                   <td><?= $mm['nim']; ?></td>
                   <td><?= $mm['nama_mhs']; ?></td>
-                  <td></td>
+                  <td><?= number_format($absensi,0); ?></td>
                   <td>
-                     <input type="number" name="tugas" class="form-control">
+                     <input type="number" min="0" value="<?= $mm['nilai_tugas']; ?>" name="nilai_tugas<?= $mm['id_krs']; ?>" class="form-control">
                   </td>
                   <td>
-                     <input type="number" name="uts" class="form-control">
+                     <input type="number" min="0" value="<?= $mm['nilai_uts']; ?>" name="nilai_uts<?= $mm['id_krs']; ?>" class="form-control">
                   </td>
                   <td>
-                     <input type="number" name="uas" class="form-control">
+                     <input type="number" min="0" value="<?= $mm['nilai_uas']; ?>" name="nilai_uas<?= $mm['id_krs']; ?>" class="form-control">
                   </td>
-               <?php endforeach; ?>
+                  <td><?= $mm['nilai_akhir']; ?></td>
+                  <td><?= $mm['nilai_huruf']; ?></td>
             </tr>
+            <?php endforeach; ?>
          </table>
+         <button type="submi" class="btn btn-primary btn-sm">Simpan</button>
+         </form>
       </div>
    </div>
 </div>

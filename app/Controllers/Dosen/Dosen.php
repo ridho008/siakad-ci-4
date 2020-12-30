@@ -85,7 +85,7 @@ class Dosen extends BaseController
             'p15' => $this->request->getVar($value['id_krs'] . 'p15'),
             'p16' => $this->request->getVar($value['id_krs'] . 'p16'),
             'p17' => $this->request->getVar($value['id_krs'] . 'p17'),
-            'p18' => $this->request->getVar($value['id_krs'] . 'p18'),
+            'p18' => $this->request->getVar($value['id_krs'] . 'p18')
          ];
          $this->dosenModel->simpanAbsensi($data);
       }
@@ -131,6 +131,42 @@ class Dosen extends BaseController
          'validation' => \Config\Services::validation()
       ];
       return view('dosen/data_nilai', $data);
+   }
+
+   public function simpanNilai()
+   {
+      $id_jadwal = $this->request->getVar('id_jadwal');
+      $mhs = $this->dosenModel->getMhsById($id_jadwal);
+      foreach ($mhs as $key => $value) {
+         $abs = $this->request->getVar('nilai_absen' . $value['id_krs']);
+         $tugas = $this->request->getVar('nilai_tugas' . $value['id_krs']);
+         $uts = $this->request->getVar('nilai_uts' . $value['id_krs']);
+         $uas = $this->request->getVar('nilai_uas' . $value['id_krs']);
+         $na = ($abs * 15 / 100) * ($tugas * 15 / 100) * ($uts * 30 / 100) * ($uas * 40 / 100);
+         if($na >= 85) :
+            $nh = "A";
+         elseif ($na < 85 && $na >= 75 ) :
+            $nh = "B";
+         elseif ($na < 75 && $na >= 65 ) :
+            $nh = "C";
+         elseif ($na < 65 && $na >= 55 ) :
+            $nh = "D";
+         else :
+            $nh = "E";
+         endif;
+         $data = [
+            'id_krs' => $this->request->getVar('id_krs' . $value['id_krs']),
+            'nilai_absen' => $this->request->getVar('nilai_absen' . $value['id_krs']),
+            'nilai_tugas' => $this->request->getVar('nilai_tugas' . $value['id_krs']),
+            'nilai_uts' => $this->request->getVar('nilai_uts' . $value['id_krs']),
+            'nilai_uas' => $this->request->getVar('nilai_uas' . $value['id_krs']),
+            'nilai_akhir' => number_format($na,0),
+            'nilai_huruf' => $nh
+         ];
+         $this->dosenModel->simpanAbsensi($data);
+      }
+      session()->setFlashdata('success', 'Data Nilai Mahasiswa Berhasil Disimpan.');
+      return redirect()->to('/dosen/nilaimhs');
    }
 
    //--------------------------------------------------------------------

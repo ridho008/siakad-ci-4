@@ -115,6 +115,42 @@ class Krs extends Migration
                     'type'           => 'INT',
                     'constraint'     => 1,
                     'null' => true
+            ],
+            'nilai_absen'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 11,
+                    'null' => true,
+                    'default' => 0
+            ],
+            'nilai_tugas'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 11,
+                    'null' => true,
+                    'default' => 0
+            ],
+            'nilai_uts'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 11,
+                    'null' => true,
+                    'default' => 0
+            ],
+            'nilai_uas'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 11,
+                    'null' => true,
+                    'default' => 0
+            ],
+            'nilai_akhir'       => [
+                    'type'           => 'INT',
+                    'constraint'     => 11,
+                    'null' => true,
+                    'default' => 0
+            ],
+            'nilai_huruf'       => [
+                    'type'           => 'VARCHAR',
+                    'constraint'     => 11,
+                    'null' => true,
+                    'default' => '-'
             ]
         ]);
         $this->forge->addKey('id_krs', true);
